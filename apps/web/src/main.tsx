@@ -6,7 +6,7 @@ import { Button } from '@figaro/ui/button';
 
 const App = () => (
   <>
-    <Button>Click Me</Button>
+    <Button variant='primary' size='md'>Click Me</Button>
   </>
 );
 

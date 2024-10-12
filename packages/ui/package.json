@@ -2,7 +2,7 @@
   "name": "@figaro/ui",
   "version": "0.0.1",
   "exports": {
-    "./button": "./components/button.tsx"
+    "./button": "./components/button/index.ts"
   },
   "license": "MIT",
   "scripts": {
