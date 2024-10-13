@@ -1,4 +1,4 @@
-export { Button } from "./button"
+export * from './button';
 /* export type { ButtonProps } from "./button" */
 
 /* export { IconButton } from "./icon-button"

@@ -2,16 +2,21 @@
   "name": "@figaro/ui",
   "version": "0.0.1",
   "exports": {
-    "./button": "./components/button/index.ts"
+    ".": "./index.ts"
   },
+  "main": "./index.ts",
+  "types": "./index.ts",
   "license": "MIT",
   "scripts": {
+    "build": "node scripts/generate.cjs",
+    "build-dist": "pnpm generate && tsup index.ts --dts",
     "lint": "eslint \"**/*.{tsx,tx}\""
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "eslint": "^8.57.0",
+    "tsup": "^7.1.0",
     "typescript": "^5.3.3"
   }
 }

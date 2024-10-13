@@ -1,5 +1,15 @@
 {
-  "extends": "@repo/typescript-config/base.json",
-  "include": ["."],
-  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "./dist",
+    "declaration": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "target": "ESNext",
+    "module": "ESNext",
+    "jsx": "react-jsx",
+    "lib": ["dom", "dom.iterable", "esnext"]
+  },
+  "include": ["src", "index.ts"],
+  "exclude": ["node_modules"]
 }

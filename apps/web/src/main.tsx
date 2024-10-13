@@ -2,11 +2,12 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import "./style.css";
-import { Button } from '@figaro/ui/button';
+import { Button, Link } from '@figaro/ui';
 
 const App = () => (
   <>
-    <Button variant='primary' size='md'>Click Me</Button>
+    <Button variant='success' size='md'>Click Me</Button>
+    <Link variant='secondary' href='www.google.com'>Link Secondary</Link>
   </>
 );
 

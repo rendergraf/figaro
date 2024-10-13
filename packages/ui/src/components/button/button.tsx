@@ -1,8 +1,20 @@
 import React from 'react';
 import { styled } from '@linaria/react';
-import { Variant, Size } from '../../types';
+import { ButtonType } from '../../types';
 
-export interface ButtonProps extends Variant, Size {
+/**
+ * Props for the Button component.
+ * @interface ButtonProps
+ * @extends ButtonType
+ * @extends Variant
+ * @extends Size
+ * @property {boolean} [isDisabled] - Indicates if the button is disabled.
+ * @property {boolean} [isLoading] - Indicates if the button is in loading state.
+ * @property {string} [borderRadius] - Specifies the border radius of the button.
+ * @property {() => void} [onClick] - Function to execute when the button is clicked.
+ * @property {React.ReactNode} children - Content of the button.
+ */
+export interface ButtonProps extends ButtonType {
   isDisabled?: boolean;
   isLoading?: boolean;
   borderRadius?: string;
@@ -10,6 +22,7 @@ export interface ButtonProps extends Variant, Size {
   children: React.ReactNode;
 }
 
+// Tamaños de los botones.
 const sizes = {
   xs: '4px 8px',
   sm: '6px 12px',
@@ -18,6 +31,7 @@ const sizes = {
   xl: '12px 24px',
 };
 
+// Tamaños de fuente para los botones.
 const fontSizes = {
   xs: '12px',
   sm: '14px',
@@ -26,6 +40,7 @@ const fontSizes = {
   xl: '20px',
 };
 
+// Variantes de estilo para los botones.
 const variants = {
   primary: {
     background: '#426cf6',
@@ -60,6 +75,12 @@ const variants = {
   },
 };
 
+/**
+ * Botón estilizado.
+ * @function StyledButton
+ * @param {ButtonProps} props - Props del botón.
+ * @returns {JSX.Element} El botón estilizado.
+ */
 const StyledButton = styled.button<ButtonProps>`
   background-color: ${({ variant }) => variants[variant || 'primary'].background};
   color: ${({ variant }) => variants[variant || 'primary'].text};
@@ -87,6 +108,11 @@ const StyledButton = styled.button<ButtonProps>`
   }
 `;
 
+/**
+ * Componente Spinner para indicar carga.
+ * @function Spinner
+ * @returns {JSX.Element} Un div que representa un spinner de carga.
+ */
 const Spinner = styled.div`
   border: 2px solid rgba(255, 255, 255, 0.2);
   border-top: 2px solid white;
@@ -105,6 +131,12 @@ const Spinner = styled.div`
   }
 `;
 
+/**
+ * Componente Button.
+ * @function Button
+ * @param {ButtonProps} props - Props del botón.
+ * @returns {JSX.Element} El botón renderizado.
+ */
 export const Button: React.FC<ButtonProps> = ({
   size,
   variant,
@@ -121,6 +153,10 @@ export const Button: React.FC<ButtonProps> = ({
     disabled={isDisabled || isLoading}
     borderRadius={borderRadius}
     onClick={onClick}
+    type="button"
+    aria-busy={isLoading}
+    data-loading={isLoading ? true : undefined}
+    aria-label={isLoading ? "Loading..." : undefined}
   >
     {isLoading ? <Spinner /> : children}
   </StyledButton>
