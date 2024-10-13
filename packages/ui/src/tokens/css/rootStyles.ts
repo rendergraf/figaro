@@ -1,4 +1,8 @@
-:root {
+import { css } from '@linaria/core';
+
+export const rootStyles = css`
+	:global() {
+		:root {
 			--border-radius-circle: 50px;
 			--border-radius-rounded: 5px;
 			--breakpoints-2xl: 1400px;
@@ -273,3 +277,6 @@
 			--color-white-lower: var(--colors-white-alpha-78, rgba(255, 255, 255, 0.78));
 			--color-white-lowest: var(--colors-white-alpha-92, rgba(255, 255, 255, 0.92));
 			}
+	}
+`;
+

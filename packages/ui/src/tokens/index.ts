@@ -1,1 +1,1 @@
-export * from './css/styles';
+export * from './css/rootStyles';

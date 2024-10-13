@@ -114,7 +114,7 @@ function generateCssVariables(primitives) {
 	const sortedPrimitives = Array.from(primitiveVariables).sort();
 	const sortedVariables = Array.from(cssVariables).sort();
 
-	return `:root {\n${sortedPrimitives.join('\n')}\n${sortedVariables.join('\n')}\n}`;
+	return `:root {\n\t\t\t${sortedPrimitives.join('\n\t\t\t')}\n\t\t\t${sortedVariables.join('\n\t\t\t')}\n\t\t\t}`;
 }
 
 // Función para procesar un archivo individual y generar archivos CSS y TS
@@ -128,7 +128,7 @@ function processFile(jsonFilePath, varsCssPath, outputFilePath) {
 	// Verifica si el archivo varsCssPath existe, si no, lo crea con contenido predeterminado
 	if (!fs.existsSync(varsCssPath)) {
 		const fileName = path.basename(varsCssPath, '.ts');
-		const initialContent = `import { css } from '@linaria/core';\n\nconst ${fileName} = css\`\n\t:global() {\n\t\t:root {}\n\t}\n\`;\n\nexport default ${fileName};\n`;
+		const initialContent = `import { css } from '@linaria/core';\n\nexport const ${fileName} = css\`\n\t:global() {\n\t\t:root {}\n\t}\n\`;\n\n`;
 		fs.writeFileSync(varsCssPath, initialContent, 'utf8');
 		console.log(`Archivo ${fileName}.ts creado.`);
 	}
@@ -139,7 +139,7 @@ function processFile(jsonFilePath, varsCssPath, outputFilePath) {
 	const rootEnd = varsCssContent.indexOf('}', rootStart) + 1;
 
 	if (rootStart !== -1 && rootEnd !== -1) {
-		const newVarsCssContent = varsCssContent.slice(0, rootStart) + cssContent + varsCssContent.slice(rootEnd);
+		const newVarsCssContent = varsCssContent.slice(0, rootStart) + `${cssContent}` + varsCssContent.slice(rootEnd);
 		fs.writeFileSync(varsCssPath, newVarsCssContent, 'utf8');
 		console.log(`Archivo ${path.basename(varsCssPath)} modificado con las nuevas variables CSS.`);
 	} else {

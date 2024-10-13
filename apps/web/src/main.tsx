@@ -2,7 +2,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import "./style.css";
-import { rootStyles,  Box, Button, Image, Link } from '@figaro/ui';
+import { rootStyles, Box, Button, Image, Link } from '@figaro/ui';
 
 
 const App = () => (
