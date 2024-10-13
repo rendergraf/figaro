@@ -10,8 +10,7 @@
     "lint": "eslint \"src/**/*.ts\""
   },
   "dependencies": {
-    "@figaro/ui": "workspace:*",
-    "@wyw-in-js/vite": "^0.5.4"
+    "@figaro/ui": "workspace:*"
   },
   "devDependencies": {
     "@linaria/vite": "^5.0.4",

@@ -9,7 +9,7 @@
   "license": "MIT",
   "scripts": {
     "build": "node scripts/generate.cjs",
-    "build-dist": "pnpm generate && tsup index.ts --dts",
+    "build-dist": "pnpm build && tsup index.ts --dts",
     "lint": "eslint \"**/*.{tsx,tx}\""
   },
   "devDependencies": {

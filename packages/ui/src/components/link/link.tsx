@@ -2,6 +2,21 @@ import React from "react";
 import { styled } from "@linaria/react";
 import { ButtonType } from "../../types";
 
+/**
+ * Props for the Button component.
+ * @interface LinkProps
+ * @extends ButtonType
+ * @extends Variant
+ * @extends Size
+ * @property {boolean} [isDisabled] - Indicates if the button is disabled.
+ * @property {boolean} [isLoading] - Indicates if the button is in loading state.
+ * @property {string} [borderRadius] - Specifies the border radius of the button.
+ * @property {string} href - URL to navigate when the button is clicked.
+ * @property {"_blank" | "_self" | "_parent" | "_top"} [target] - Specifies where to open the linked document.
+ * @property {() => void} [onClick] - Function to execute when the button is clicked.
+ * @property {string} [rel] - Specifies the relationship between the current document and the linked document.
+ * @property {React.ReactNode} children - Content of the button.
+ */
 export interface LinkProps extends ButtonType {
   isDisabled?: boolean;
   isLoading?: boolean;
@@ -62,6 +77,12 @@ const variants = {
   },
 };
 
+/**
+ * Link estilizado.
+ * @function StyledLink
+ * @param {ButtonProps} props - Props del botón.
+ * @returns {JSX.Element} El botón estilizado.
+ */
 const StyledLink = styled.a<LinkProps>`
   background-color: ${({ variant }) =>
     variants[variant || "primary"].background};
@@ -96,6 +117,11 @@ const StyledLink = styled.a<LinkProps>`
   }
 `;
 
+/**
+ * Componente Spinner para indicar carga.
+ * @function Spinner
+ * @returns {JSX.Element} Un div que representa un spinner de carga.
+ */
 const Spinner = styled.div`
   border: 2px solid rgba(255, 255, 255, 0.2);
   border-top: 2px solid white;
@@ -114,6 +140,12 @@ const Spinner = styled.div`
   }
 `;
 
+/**
+ * Componente Link.
+ * @function Link
+ * @param {LinkProps} props - Props del link.
+ * @returns {JSX.Element} El link renderizado.
+ */
 export const Link: React.FC<LinkProps> = ({
   size,
   variant,
