@@ -1,0 +1,5 @@
+{
+    "cssVariables.lookupFiles": [
+        "packages/ui/src/tokens/css/autocomplete/**/*.css"
+    ]
+}

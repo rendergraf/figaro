@@ -2,10 +2,11 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import "./style.css";
-import { Box, Button, Image, Link } from '@figaro/ui';
+import { rootStyles,  Box, Button, Image, Link } from '@figaro/ui';
+
 
 const App = () => (
-  <>
+  <div className={rootStyles}>
     <Button variant='secondary' size='lg'>Click Me</Button>
     <Link variant='primary' size='lg' href='https://www.google.com'>Google</Link>
     <Image borderRadius='full' objectFit='cover' loading='lazy' src='https://placehold.co/150' alt='placeholder' title='Foto' />
@@ -14,8 +15,8 @@ const App = () => (
       borderWidth="1px"
       borderRadius="lg"
       overflow="hidden"
-      bgcolor="#c4c4c4"
-      color='#000000'
+      bgcolor="var(--colors-blue-400)"
+      color='var(--colors-black)'
       boxShadow="xs"
       p="10px"
       display="flex"
@@ -29,7 +30,7 @@ const App = () => (
       <Image borderRadius='full' objectFit='cover' loading='lazy' src='https://placehold.co/150' alt='placeholder' title='Foto' />
       <Image borderRadius='full' objectFit='cover' loading='lazy' src='https://placehold.co/150' alt='placeholder' title='Foto' />
     </Box>
-  </>
+  </div>
 );
 
 const root = createRoot(document.querySelector<HTMLDivElement>("#app")!);
