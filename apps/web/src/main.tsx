@@ -2,7 +2,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import "./style.css";
-import { rootStyles, Box, Button, Image, Link } from '@figaro/ui';
+import { rootStyles, Box, Button, Image, Link, Icon } from '@figaro/ui';
 
 
 const App = () => (
@@ -27,7 +27,7 @@ const App = () => (
       },
       bigDesktop: {
         bgcolor: 'pink',
-      },
+      }
     }}>
       <Button variant='success' size='lg'>Click Me</Button>
       <Link variant='primary' size='lg' href='https://www.google.com'>Google</Link>
@@ -52,6 +52,8 @@ const App = () => (
       <Image borderRadius='full' objectFit='cover' loading='lazy' src='https://placehold.co/150' alt='placeholder' title='Foto' />
       <Image borderRadius='full' objectFit='cover' loading='lazy' src='https://placehold.co/150' alt='placeholder' title='Foto' />
       <Image borderRadius='full' objectFit='cover' loading='lazy' src='https://placehold.co/150' alt='placeholder' title='Foto' />
+      <Icon name='arrow' size={48} color="blue" />
+      <Icon name='home' size={48} color="blue" />
     </Box>
   </div>
 );

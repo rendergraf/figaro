@@ -11,13 +11,16 @@
     "build": "node scripts/generate-index.cjs && pnpm build-tokens",
     "build-dist": "pnpm build && tsup index.ts --dts",
     "build-tokens": "node ./scripts/generate-tokens.cjs",
+    "generate-icons": "node ./scripts/generate-icons.cjs",
     "lint": "eslint \"**/*.{tsx,tx}\""
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "eslint": "^8.57.0",
+    "svgo": "^3.3.2",
     "tsup": "^7.1.0",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "vite-plugin-svgr": "^4.2.0"
   }
 }

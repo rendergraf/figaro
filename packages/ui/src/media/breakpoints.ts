@@ -18,7 +18,7 @@ type Breakpoints = {
 };
 
 // Define the breakpoints
-const breakpoints: Breakpoints = {
+export const breakpoints: Breakpoints = {
 	phone: 576,
 	tabletPortrait: 768,
 	tabletLandscape: 992,

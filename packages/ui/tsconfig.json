@@ -11,8 +11,11 @@
     "target": "ESNext",
     "module": "ESNext",
     "jsx": "react-jsx",
-    "lib": ["dom", "dom.iterable", "esnext"]
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
   },
-  "include": ["src", "index.ts"],
+  "include": ["src", "index.ts", "src/declarations.d.ts"],
   "exclude": ["node_modules"]
 }
