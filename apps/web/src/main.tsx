@@ -52,8 +52,9 @@ const App = () => (
       <Image borderRadius='full' objectFit='cover' loading='lazy' src='https://placehold.co/150' alt='placeholder' title='Foto' />
       <Image borderRadius='full' objectFit='cover' loading='lazy' src='https://placehold.co/150' alt='placeholder' title='Foto' />
       <Image borderRadius='full' objectFit='cover' loading='lazy' src='https://placehold.co/150' alt='placeholder' title='Foto' />
-      <Icon name='arrow' size={48} color="blue" />
-      <Icon name='home' size={48} color="blue" />
+      <Icon name='starSolid' color="white" />
+      <Icon name='home' color="white" />
+      <Button variant='primary' size='lg'><Icon name='heartSolid' color="white" />Click</Button>
     </Box>
   </div>
 );
