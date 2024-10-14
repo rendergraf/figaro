@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const folders = ['src/components', 'src/containers', 'src/tokens', 'src/media'];
+const folders = ['src/components', 'src/containers', 'src/tokens', 'src/media', 'src/types'];
 const baseDir = path.resolve(__dirname, '../');
 const indexFilePath = path.resolve(baseDir, 'index.ts');
 
@@ -13,6 +13,10 @@ folders.forEach((folder) => {
     const fileName = file.replace(/\.tsx?$/, '');
 
     if (folder === 'src/tokens' && (fileName === 'css' || fileName === 'figma')) {
+      return;
+    }
+
+    if (folder === 'src/types' && (fileName === 'boxTypes' || fileName === 'buttonTypes' )) {
       return;
     }
 

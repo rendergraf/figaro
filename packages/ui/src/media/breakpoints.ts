@@ -93,4 +93,4 @@ const media: {
 };
 
 // Export the media queries
-export { media };
+export { media, BreakpointKey };

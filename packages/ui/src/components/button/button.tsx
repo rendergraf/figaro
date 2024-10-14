@@ -64,7 +64,7 @@ const variants = {
     hover: '#c82333',
   },
   success: {
-    background: '#28a745',
+    background: 'var(--color-status-success)',
     text: 'white',
     hover: '#218838',
   },
