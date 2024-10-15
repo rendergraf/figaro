@@ -79,7 +79,7 @@ export const rootStyles = css`
 			--colors-orange-900: #e74c3c;
 			--colors-red-700: #dc2314;
 			--colors-red-900: #bf2616;
-			--colors-transparent: rgba(255, 255, 255, 0);
+			--colors-transparent: rgba(255, 255, 255, 0.00);
 			--colors-white-alpha-12: rgba(255, 255, 255, 0.24);
 			--colors-white-alpha-24: rgba(255, 255, 255, 0.24);
 			--colors-white-alpha-56: rgba(255, 255, 255, 0.56);
@@ -87,7 +87,7 @@ export const rootStyles = css`
 			--colors-white-alpha-92: rgba(255, 255, 255, 0.92);
 			--colors-white: #ffffff;
 			--font-family-primary: Roboto;
-			--font-family-secondary: 'Poppins';
+			--font-family-secondary: "Poppins";
 			--font-height-base: 20px;
 			--font-height-large: 24px;
 			--font-height-larger: 28px;
@@ -177,8 +177,8 @@ export const rootStyles = css`
 			--color-negative-boder-disabled: var(--colors-blue-500, #2d89ca);
 			--color-negative-boder-hover: var(--colors-white, #ffffff);
 			--color-negative-boder-pressed: var(--colors-white, #ffffff);
-			--color-negative-surface-default: var(--colors-transparent, rgba(255, 255, 255, 0));
-			--color-negative-surface-disabled: var(--colors-transparent, rgba(255, 255, 255, 0));
+			--color-negative-surface-default: var(--colors-transparent, rgba(255, 255, 255, 0.00));
+			--color-negative-surface-disabled: var(--colors-transparent, rgba(255, 255, 255, 0.00));
 			--color-negative-surface-hover: var(--colors-blue-500, #2d89ca);
 			--color-negative-surface-pressed: var(--colors-blue-500, #2d89ca);
 			--color-negative-text-default: var(--colors-blue-500, #2d89ca);
@@ -187,10 +187,10 @@ export const rootStyles = css`
 			--color-negative-text-pressed: var(--colors-white, #ffffff);
 			--color-price-negative: var(--colors-white, #ffffff);
 			--color-primary-base: var(--colors-blue, #003366);
-			--color-primary-boder-default: var(--colors-transparent, rgba(255, 255, 255, 0));
-			--color-primary-boder-disabled: var(--colors-transparent, rgba(255, 255, 255, 0));
-			--color-primary-boder-hover: var(--colors-transparent, rgba(255, 255, 255, 0));
-			--color-primary-boder-pressed: var(--colors-transparent, rgba(255, 255, 255, 0));
+			--color-primary-boder-default: var(--colors-transparent, rgba(255, 255, 255, 0.00));
+			--color-primary-boder-disabled: var(--colors-transparent, rgba(255, 255, 255, 0.00));
+			--color-primary-boder-hover: var(--colors-transparent, rgba(255, 255, 255, 0.00));
+			--color-primary-boder-pressed: var(--colors-transparent, rgba(255, 255, 255, 0.00));
 			--color-primary-light: var(--colors-blue-900, #2a4365);
 			--color-primary-lighter: var(--colors-blue-600, #2980b9);
 			--color-primary-lightest: var(--colors-blue-400, #4299e1);
@@ -208,10 +208,10 @@ export const rootStyles = css`
 			--color-rating-base: var(--colors-orange-500, #faaf05);
 			--color-secondary-active: var(--colors-orange-500, #faaf05);
 			--color-secondary-base: var(--colors-orange-500, #faaf05);
-			--color-secondary-boder-default: var(--colors-transparent, rgba(255, 255, 255, 0));
-			--color-secondary-boder-disabled: var(--colors-transparent, rgba(255, 255, 255, 0));
-			--color-secondary-boder-hover: var(--colors-transparent, rgba(255, 255, 255, 0));
-			--color-secondary-boder-pressed: var(--colors-transparent, rgba(255, 255, 255, 0));
+			--color-secondary-boder-default: var(--colors-transparent, rgba(255, 255, 255, 0.00));
+			--color-secondary-boder-disabled: var(--colors-transparent, rgba(255, 255, 255, 0.00));
+			--color-secondary-boder-hover: var(--colors-transparent, rgba(255, 255, 255, 0.00));
+			--color-secondary-boder-pressed: var(--colors-transparent, rgba(255, 255, 255, 0.00));
 			--color-secondary-disabled: var(--colors-orange-500, #faaf05);
 			--color-secondary-hover: var(--colors-orange-600, #e7a205);
 			--color-secondary-surface-default: var(--colors-orange-500, #faaf05);
@@ -238,14 +238,14 @@ export const rootStyles = css`
 			--color-status-textSuccess: var(--colors-custom-05, #19713e);
 			--color-status-textWarning: var(--colors-brown-800, #965216);
 			--color-status-warning: var(--colors-orange-600, #e7a205);
-			--color-tertiary-boder-default: var(--colors-transparent, rgba(255, 255, 255, 0));
-			--color-tertiary-boder-disabled: var(--colors-transparent, rgba(255, 255, 255, 0));
-			--color-tertiary-boder-hover: var(--colors-transparent, rgba(255, 255, 255, 0));
-			--color-tertiary-boder-pressed: var(--colors-transparent, rgba(255, 255, 255, 0));
-			--color-tertiary-surface-default: var(--colors-transparent, rgba(255, 255, 255, 0));
-			--color-tertiary-surface-disabled: var(--colors-transparent, rgba(255, 255, 255, 0));
-			--color-tertiary-surface-hover: var(--colors-transparent, rgba(255, 255, 255, 0));
-			--color-tertiary-surface-pressed: var(--colors-transparent, rgba(255, 255, 255, 0));
+			--color-tertiary-boder-default: var(--colors-transparent, rgba(255, 255, 255, 0.00));
+			--color-tertiary-boder-disabled: var(--colors-transparent, rgba(255, 255, 255, 0.00));
+			--color-tertiary-boder-hover: var(--colors-transparent, rgba(255, 255, 255, 0.00));
+			--color-tertiary-boder-pressed: var(--colors-transparent, rgba(255, 255, 255, 0.00));
+			--color-tertiary-surface-default: var(--colors-transparent, rgba(255, 255, 255, 0.00));
+			--color-tertiary-surface-disabled: var(--colors-transparent, rgba(255, 255, 255, 0.00));
+			--color-tertiary-surface-hover: var(--colors-transparent, rgba(255, 255, 255, 0.00));
+			--color-tertiary-surface-pressed: var(--colors-transparent, rgba(255, 255, 255, 0.00));
 			--color-tertiary-text-default: var(--colors-black, #000000);
 			--color-tertiary-text-disabled: var(--colors-black-alpha-12, rgba(0, 0, 0, 0.12));
 			--color-tertiary-text-hover: var(--colors-black, #000000);
@@ -276,6 +276,6 @@ export const rootStyles = css`
 			--color-white-low: var(--colors-white-alpha-56, rgba(255, 255, 255, 0.56));
 			--color-white-lower: var(--colors-white-alpha-78, rgba(255, 255, 255, 0.78));
 			--color-white-lowest: var(--colors-white-alpha-92, rgba(255, 255, 255, 0.92));
-		}
+			}
 	}
 `;

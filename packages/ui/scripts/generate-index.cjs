@@ -7,21 +7,21 @@ const indexFilePath = path.resolve(baseDir, 'index.ts');
 
 let exportLines = '';
 
-folders.forEach((folder) => {
-  const folderPath = path.join(baseDir, folder);
-  fs.readdirSync(folderPath).forEach((file) => {
-    const fileName = file.replace(/\.tsx?$/, '');
+folders.forEach(folder => {
+	const folderPath = path.join(baseDir, folder);
+	fs.readdirSync(folderPath).forEach(file => {
+		const fileName = file.replace(/\.tsx?$/, '');
 
-    if (folder === 'src/tokens' && (fileName === 'css' || fileName === 'figma')) {
-      return;
-    }
+		if (folder === 'src/tokens' && (fileName === 'css' || fileName === 'figma')) {
+			return;
+		}
 
-    if (folder === 'src/types' && (fileName === 'boxTypes' || fileName === 'buttonTypes' )) {
-      return;
-    }
+		if (folder === 'src/types' && (fileName === 'boxTypes' || fileName === 'buttonTypes')) {
+			return;
+		}
 
-    exportLines += `export * from "./${folder}/${fileName}";\n`;
-  });
+		exportLines += `export * from './${folder}/${fileName}';\n`;
+	});
 });
 
 fs.writeFileSync(indexFilePath, exportLines);

@@ -21,3 +21,14 @@ export interface Size {
 	/** Button size. Can be 'xs', 'sm', 'md', 'lg', 'xl'. */
 	size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 }
+
+/**
+ * @description Properties related to the button style. It can be 'outline', 'filled', 'flushed'. Default value is 'filled'.
+ * @author Xavier Araque
+ * @date 15/10/2024
+ * @export Styles
+ * @interface Styles
+ */
+export interface Style {
+	style?: 'outline' | 'filled' | 'flushed';
+}

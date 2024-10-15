@@ -2,13 +2,13 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import './style.css';
-import { rootStyles, Box, Button, Image, Link, Icon } from '@figaro/ui';
+import { rootStyles, Box, Button, Image, Link, Icon, Input } from '@figaro/ui';
 
 const App = () => (
 	<div className={rootStyles}>
 		<Box
 			display='flex'
-			flexDirection='column'
+			flexDirection='row'
 			bgcolor='red'
 			responsive={{
 				phone: {
@@ -43,7 +43,7 @@ const App = () => (
 				borderRadius='none'
 				objectFit='cover'
 				loading='lazy'
-				src='https://placehold.co/300'
+				src='https://placehold.co/150'
 				alt='placeholder'
 				title='Foto'
 			/>
@@ -103,6 +103,7 @@ const App = () => (
 				<Icon name='heartSolid' color='white' />
 				Click
 			</Button>
+			<Input variant='secondary' placeholder='Aqui' />
 		</Box>
 	</div>
 );
