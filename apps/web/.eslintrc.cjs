@@ -1,5 +1,8 @@
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
-  root: true,
-  extends: ["@repo/eslint-config/index.js"],
+	root: true,
+	extends: ['@repo/eslint-config/index.js'],
+	rules: {
+		'prettier/prettier': ['error', { endOfLine: 'auto' }],
+	},
 };

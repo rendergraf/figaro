@@ -16,7 +16,7 @@ import { ImageProps } from '../../types';
  * @property {string} [fallbackSrc] - URL de la imagen de reemplazo si la imagen principal falla al cargar.
  */
 const StyledImage = styled.img<ImageProps>`
-  border-radius: ${({ borderRadius }) => {
+	border-radius: ${({ borderRadius }) => {
 		switch (borderRadius) {
 			case 'full':
 				return '50%';
@@ -33,9 +33,9 @@ const StyledImage = styled.img<ImageProps>`
 				return '0';
 		}
 	}};
-  width: ${({ boxSize }) => boxSize || 'auto'};
-  height: ${({ boxSize }) => boxSize || 'auto'};
-  object-fit: ${({ objectFit }) => objectFit || 'cover'};
+	width: ${({ boxSize }) => boxSize || 'auto'};
+	height: ${({ boxSize }) => boxSize || 'auto'};
+	object-fit: ${({ objectFit }) => objectFit || 'cover'};
 `;
 
 /**
@@ -56,10 +56,10 @@ export const Image: React.FC<ImageProps> = ({
 }) => {
 	const [imgSrc, setImgSrc] = useState(src); // Estado para la URL de la imagen
 
-  // Función que maneja el error de carga
-  const handleError = () => {
-    setImgSrc(fallbackSrc); // Cambia a la imagen de fallback si hay un error
-  };
+	// Función que maneja el error de carga
+	const handleError = () => {
+		setImgSrc(fallbackSrc); // Cambia a la imagen de fallback si hay un error
+	};
 	return (
 		<StyledImage
 			src={imgSrc}

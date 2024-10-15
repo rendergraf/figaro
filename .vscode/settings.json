@@ -1,5 +1,19 @@
 {
-    "cssVariables.lookupFiles": [
-        "packages/ui/src/tokens/css/autocomplete/**/*.css"
-    ]
+	"typescript.preferences.importModuleSpecifier": "project-relative",
+	"typescript.preferences.importModuleSpecifierEnding": "auto",
+	"typescript.suggest.autoImports": true,
+	"editor.formatOnSave": true,
+	"eslint.format.enable": true,
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"cssVariables.lookupFiles": ["packages/ui/src/tokens/css/autocomplete/**/*.css"],
+	"editor.tabSize": 2,
+	"editor.insertSpaces": false,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "explicit"
+	},
 }

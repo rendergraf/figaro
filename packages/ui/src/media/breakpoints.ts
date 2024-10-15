@@ -1,11 +1,5 @@
 // Define the type for breakpoint keys
-type BreakpointKey =
-    | 'phone'
-    | 'tabletPortrait'
-    | 'tabletLandscape'
-	| 'desktop'
-	| 'largeDesktop'
-	| 'bigDesktop';
+type BreakpointKey = 'phone' | 'tabletPortrait' | 'tabletLandscape' | 'desktop' | 'largeDesktop' | 'bigDesktop';
 
 /**
  * Defines the Breakpoints type.
