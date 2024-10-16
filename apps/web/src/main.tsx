@@ -50,6 +50,68 @@ const App = () => (
 		</Box>
 		<Box
 			component='section'
+			bgcolor='#ffffff'
+			display='flex'
+			flexDirection='column'
+			justifyContent='center'
+			alignItems='center'
+			flexWrap='nowrap'
+			gap='20px'
+		>
+			<Input variant='primary' appearance='outline' placeholder='Name' />
+			<Input variant='secondary' appearance='outline' placeholder='Name' />
+			<Input variant='tertiary' appearance='outline' placeholder='Name' />
+			<Input variant='negative' appearance='outline' placeholder='Name' />
+			<Input variant='success' appearance='outline' placeholder='Name' />
+			<Input variant='neutral' appearance='outline' placeholder='Name' />
+			<hr style={{ width: '100%' }} />
+			<Input variant='primary' appearance='filled' placeholder='Name' />
+			<Input variant='secondary' appearance='filled' placeholder='Name' />
+			<Input variant='tertiary' appearance='filled' placeholder='Name' />
+			<Input variant='negative' appearance='filled' placeholder='Name' />
+			<Input variant='success' appearance='filled' placeholder='Name' />
+			<Input variant='neutral' appearance='filled' placeholder='Name' />
+			<hr style={{ width: '100%' }} />
+			<Input variant='primary' appearance='flushed' placeholder='Name' />
+			<Input variant='secondary' appearance='flushed' placeholder='Name' />
+			<Input variant='tertiary' appearance='flushed' placeholder='Name' />
+			<Input variant='negative' appearance='flushed' placeholder='Name' />
+			<Input variant='success' appearance='flushed' placeholder='Name' />
+			<Input variant='neutral' appearance='flushed' placeholder='Name' />
+			<hr style={{ width: '100%' }} />
+			<Input variant='primary' isDisabled appearance='outline' placeholder='Name' />
+			<Input variant='secondary' isDisabled appearance='outline' placeholder='Name' />
+			<Input variant='tertiary' isDisabled appearance='outline' placeholder='Name' />
+			<Input variant='negative' isDisabled appearance='outline' placeholder='Name' />
+			<Input variant='success' isDisabled appearance='outline' placeholder='Name' />
+			<Input variant='neutral' isDisabled appearance='outline' placeholder='Name' />
+			<hr style={{ width: '100%' }} />
+			<Input variant='primary' isDisabled appearance='filled' placeholder='Name' />
+			<Input variant='secondary' isDisabled appearance='filled' placeholder='Name' />
+			<Input variant='tertiary' isDisabled appearance='filled' placeholder='Name' />
+			<Input variant='negative' isDisabled appearance='filled' placeholder='Name' />
+			<Input variant='success' isDisabled appearance='filled' placeholder='Name' />
+			<Input variant='neutral' isDisabled appearance='filled' placeholder='Name' />
+			<hr style={{ width: '100%' }} />
+			<Input variant='primary' isDisabled appearance='flushed' placeholder='Name' />
+			<Input variant='secondary' isDisabled appearance='flushed' placeholder='Name' />
+			<Input variant='tertiary' isDisabled appearance='flushed' placeholder='Name' />
+			<Input variant='negative' isDisabled appearance='flushed' placeholder='Name' />
+			<Input variant='success' isDisabled appearance='flushed' placeholder='Name' />
+			<Input variant='neutral' isDisabled appearance='flushed' placeholder='Name' />
+			<hr style={{ width: '100%' }} />
+
+			{/* 			<hr style={{ width: '100%' }} />
+			<Input appearance='flushed' placeholder='Phone' />
+			<hr style={{ width: '100%' }} />
+			<Input appearance='outline' isDisabled placeholder='Name' />
+			<Input appearance='filled' placeholder='Lastname' />
+			<Input appearance='flushed' placeholder='Phone' />
+			<hr style={{ width: '100%' }} />
+			<Input variant='negative' appearance='filled' placeholder='Name' /> */}
+		</Box>
+		<Box
+			component='section'
 			maxW='100%'
 			borderWidth='1px'
 			borderRadius='lg'
@@ -103,7 +165,6 @@ const App = () => (
 				<Icon name='heartSolid' color='white' />
 				Click
 			</Button>
-			<Input variant='secondary' placeholder='Aqui' />
 		</Box>
 	</div>
 );

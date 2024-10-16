@@ -1,8 +1,21 @@
 import React from 'react';
 import { styled } from '@linaria/react';
+import { lighten } from 'polished'; // Importa lighten desde polished
 import { InputType } from '../../types';
 
-// Tamaños del campo de entrada.
+/**
+ * Size configurations for the input field.
+ *
+ * This object defines the padding sizes for different input variations,
+ * allowing for consistent styling based on the selected size.
+ *
+ * @constant {Object} sizes
+ * @property {string} xs - Extra small size (4px vertical, 8px horizontal).
+ * @property {string} sm - Small size (6px vertical, 12px horizontal).
+ * @property {string} md - Medium size (8px vertical, 16px horizontal).
+ * @property {string} lg - Large size (10px vertical, 20px horizontal).
+ * @property {string} xl - Extra large size (12px vertical, 24px horizontal).
+ */
 const sizes = {
 	xs: '4px 8px',
 	sm: '6px 12px',
@@ -11,126 +24,217 @@ const sizes = {
 	xl: '12px 24px',
 };
 
-// Variantes de estilo para el campo de entrada.
+/**
+ * Style variants for the input field.
+ *
+ * This object defines different visual styles for the input, including
+ * color properties for the tint and text, allowing customization based
+ * on the selected variant.
+ *
+ * @constant {Object} variants
+ * @property {Object} primary - Primary style variant.
+ * @property {string} primary.tint - The tint color for the primary variant.
+ * @property {string} primary.text - The text color for the primary variant.
+ * @property {Object} secondary - Secondary style variant.
+ * @property {string} secondary.tint - The tint color for the secondary variant.
+ * @property {string} secondary.text - The text color for the secondary variant.
+ * @property {Object} tertiary - Tertiary style variant.
+ * @property {string} tertiary.tint - The tint color for the tertiary variant.
+ * @property {string} tertiary.text - The text color for the tertiary variant.
+ * @property {Object} negative - Negative style variant.
+ * @property {string} negative.tint - The tint color for the negative variant.
+ * @property {string} negative.text - The text color for the negative variant.
+ * @property {Object} success - Success style variant.
+ * @property {string} success.tint - The tint color for the success variant.
+ * @property {string} success.text - The text color for the success variant.
+ * @property {Object} neutral - Neutral style variant.
+ * @property {string} neutral.tint - The tint color for the neutral variant.
+ * @property {string} neutral.text - The text color for the neutral variant.
+ */
 const variants = {
 	primary: {
-		background: '#fff',
-		text: '#333',
-		border: '1px solid #ccc',
-		hover: '1px solid #426cf6',
+		tint: '#426cf6',
+		text: '#000f42',
 	},
 	secondary: {
-		background: '#f8f9fa',
-		text: '#333',
-		border: '1px solid #ccc',
-		hover: '1px solid #6c757d',
+		tint: '#ffd000',
+		text: '#000000',
 	},
 	tertiary: {
-		background: 'transparent',
-		text: '#426cf6',
-		border: '1px solid #426cf6',
-		hover: 'transparent',
+		tint: '#bd42f6',
+		text: '#61007b',
 	},
 	negative: {
-		background: '#dc3545',
-		text: 'white',
-		border: '1px solid #dc3545',
-		hover: '#c82333',
+		tint: '#dc3545',
+		text: '#4d0000',
 	},
 	success: {
-		background: 'var(--color-status-success)',
-		text: 'white',
-		border: '1px solid var(--color-status-success)',
-		hover: '#218838',
+		tint: '#00bf29',
+		text: '#000000',
 	},
 	neutral: {
-		background: '#f8f9fa',
+		tint: '#676767',
 		text: '#212529',
-		border: '1px solid #ccc',
-		hover: '#f8f9fa',
 	},
 };
 
-const styles = {
+/**
+ * Defines the border appearance styles for different input variations.
+ * Each appearance defines the border width for the bottom and the rest
+ * of the borders (top, left, and right).
+ *
+ * @typedef {Object} Appearance
+ * @property {string} borderBottomWidth - The width of the bottom border.
+ * @property {string} borderTheRest - The width of the top, left, and right borders.
+ *
+ * @type {Object<string, Appearance>}
+ * @property {Appearance} outline - The appearance style for outlined inputs.
+ * @property {Appearance} filled - The appearance style for filled inputs.
+ * @property {Appearance} flushed - The appearance style for flushed inputs.
+ *
+ * @example
+ * const borderStyle = appearances.outline.borderBottomWidth; // '1px'
+ */
+const appearances = {
 	outline: {
-		outline: 0,
-		appearance: 'none',
-		background: '#ffffff',
-		color: '#426cf6',
-		borderColor: '#f4f4f5',
-		borderWidth: '1px',
+		borderBottomWidth: '1px',
+		borderTheRest: '1px',
 	},
 	filled: {
-		outline: 0,
-		appearance: 'none',
-		background: '#426cf6',
-		color: '#ffffff',
-		borderColor: 'transparent',
-		borderWidth: '1px',
+		borderBottomWidth: '1px',
+		borderTheRest: '1px',
 	},
 	flushed: {
-		outline: 0,
-		appearance: 'none',
-		background: 'transparent',
-		color: '#ffffff',
-		borderColor: '#426cf6',
-		borderWidth: '1px',
+		borderBottomWidth: '1px',
+		borderTheRest: '0px',
 	},
 };
 
-// Props para el componente Field
+/**
+ * @description Properties related to the input component.
+ * @author Xavier Araque
+ * @date 16/10/2024
+ * @export InputProps
+ * @interface InputProps
+ * @extends {InputType}
+ */
 export interface InputProps extends InputType {
 	isDisabled?: boolean;
 	borderRadius?: string;
 	placeholder?: string;
 }
 
-// Campo de entrada estilizado
+/**
+ * Styled input component using Linaria.
+ * This component supports different variants and appearances, allowing
+ * customization of its style based on the context in which it is used.
+ *
+ * @component
+ * @param {Object} props - The properties for the input component.
+ * @param {('xs' | 'sm' | 'md' | 'lg' | 'xl')} [props.size='md'] - The size of the input field.
+ * Can be one of: 'xs', 'sm', 'md', 'lg', 'xl'.
+ * @param {('primary' | 'secondary' | 'tertiary' | 'negative' | 'success' | 'neutral')} [props.variant='primary'] -
+ * The style variant of the input field, defining the background and text colors.
+ * @param {('outline' | 'filled' | 'flushed')} [props.appearance='outline'] - The appearance of the input field.
+ * Defines how borders and background are presented.
+ * @param {boolean} [props.isDisabled=false] - Indicates if the input field is disabled.
+ * If true, the cursor will change to 'not-allowed' and opacity will be reduced.
+ *
+ * @returns {React.ReactElement} The styled input component.
+ *
+ * @example
+ * <InputStyled size="lg" variant="secondary" appearance="filled" />
+ */
 const InputStyled = styled.input<InputProps>`
-	background-color: ${({ style }: { style?: keyof typeof styles }) => styles[style || 'outline'].background};
-	border-color: ${({ style }: { style?: keyof typeof styles }) => styles[style || 'outline'].borderColor};
-	border-width: ${({ style }: { style?: keyof typeof styles }) => styles[style || 'outline'].borderWidth};
-	color: ${({ style }: { style?: keyof typeof styles }) => styles[style || 'outline'].color};
+	background-color: ${({ variant, appearance }) =>
+		appearance === 'filled' ? lighten(0.35, variants[variant || 'primary'].tint) : 'transparent'};
 
-	border-width: ${({ style }: { style?: keyof typeof styles }) => styles[style || 'outline'].borderWidth};
-	padding: ${({ size }) => sizes[size || 'md']};
-	border-radius: ${({ borderRadius }) => borderRadius || '4px'};
+	color: ${({ variant }) => variants[variant || 'primary'].text};
+
+	border-color: ${({ appearance, variant }) =>
+		appearance === 'filled' ? 'transparent' : variants[variant || 'primary'].tint};
+
+	padding: ${({ size }: { size?: keyof typeof sizes }) => sizes[size || 'md']};
+
+	border-top-width: ${({ appearance }: { appearance?: keyof typeof appearances }) =>
+		appearances[appearance || 'outline'].borderTheRest};
+	border-right-width: ${({ appearance }: { appearance?: keyof typeof appearances }) =>
+		appearances[appearance || 'outline'].borderTheRest};
+	border-bottom-width: ${({ appearance }: { appearance?: keyof typeof appearances }) =>
+		appearances[appearance || 'outline'].borderBottomWidth};
+	border-left-width: ${({ appearance }: { appearance?: keyof typeof appearances }) =>
+		appearances[appearance || 'outline'].borderTheRest};
+
 	cursor: ${({ isDisabled }) => (isDisabled ? 'not-allowed' : 'text')};
-	opacity: ${({ isDisabled }) => (isDisabled ? 0.6 : 1)};
+	opacity: ${({ isDisabled }) => (isDisabled ? 0.4 : 1)};
 	font-size: 16px;
 	outline: 0;
 	appearance: none;
-	--focus-ring-color: color-mix(in srgb, var(--chakra-colors-blue-500) 50%, transparent);
-	transition: border-color 0.2s;
+	transition:
+		border-color 0.2s,
+		box-shadow 0.2s;
 
-	/* 	&:hover {
-		border-color: ${({ variant, isDisabled }) =>
-		isDisabled ? variants[variant || 'primary'].border : variants[variant || 'primary'].hover};
-	} */
+	&:is(:focus-visible, [data-focus-visible]) {
+		outline-style: solid;
+		outline-offset: 0px;
+		outline-width: ${({ appearance }) => (appearance === 'flushed' ? '0px' : '1px')};
+		outline-color: ${({ variant }) => variants[variant || 'primary'].tint};
+		box-shadow: ${({ appearance, variant }) =>
+			appearance === 'flushed' ? `0px 1px 0px 0px ${variants[variant || 'primary'].tint}` : 'none'};
+		border-color: ${({ variant }) => variants[variant || 'primary'].tint};
+	}
 
 	&:focus {
-		/* border-color: #426cf6; */
+		box-shadow: ${({ appearance, variant }) =>
+			appearance === 'flushed' ? `0px 1px 0px 0px ${variants[variant || 'primary'].tint}` : 'none'};
 	}
 `;
 
-// Componente Field
+/**
+ * A styled input component for text input.
+ *
+ * This component allows for customization through various props, including size,
+ * variant, appearance, and more. It utilizes the styled-components library for
+ * consistent styling across different input variations.
+ *
+ * @component
+ * @param {Object} props - The props for the Input component.
+ * @param {keyof typeof sizes} [props.size] - The size of the input, controlling padding.
+ * @param {keyof typeof variants} [props.variant] - The visual style variant of the input.
+ * @param {boolean} [props.isDisabled=false] - Indicates if the input should be disabled.
+ * @param {string} [props.borderRadius] - Custom border radius for the input.
+ * @param {string} [props.placeholder] - Placeholder text for the input field.
+ * @param {keyof typeof appearances} [props.appearance] - The appearance style of the input.
+ *
+ * @returns {JSX.Element} The rendered Input component.
+ *
+ * @example
+ * <Input
+ *   size="md"
+ *   variant="primary"
+ *   isDisabled={false}
+ *   borderRadius="4px"
+ *   placeholder="Enter text"
+ *   appearance="outline"
+ * />
+ */
 export const Input: React.FC<InputProps> = ({
 	size,
 	variant,
 	isDisabled = false,
 	borderRadius,
 	placeholder,
-	style,
+	appearance,
 }) => (
 	<InputStyled
 		variant={variant}
-		style={style}
+		appearance={appearance}
 		size={size}
 		isDisabled={isDisabled}
 		borderRadius={borderRadius}
 		placeholder={placeholder}
 		disabled={isDisabled}
-		type='text' // Cambiado de 'input' a 'text'
+		type='text'
 		aria-disabled={isDisabled}
 	/>
 );

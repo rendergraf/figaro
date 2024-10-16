@@ -29,6 +29,6 @@ export interface Size {
  * @export Styles
  * @interface Styles
  */
-export interface Style {
-	style?: 'outline' | 'filled' | 'flushed';
+export interface Appearance {
+	appearance?: 'outline' | 'filled' | 'flushed';
 }
