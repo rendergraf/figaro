@@ -15,6 +15,8 @@ import { ReactComponent as Clock } from '../../icons/processed/clock.svg';
 import { ReactComponent as Close } from '../../icons/processed/close.svg';
 import { ReactComponent as Ellipsis } from '../../icons/processed/ellipsis.svg';
 import { ReactComponent as EllipsisVertical } from '../../icons/processed/ellipsisVertical.svg';
+import { ReactComponent as Eye } from '../../icons/processed/eye.svg';
+import { ReactComponent as EyeSlash } from '../../icons/processed/eyeSlash.svg';
 import { ReactComponent as Heart } from '../../icons/processed/heart.svg';
 import { ReactComponent as HeartSolid } from '../../icons/processed/heartSolid.svg';
 import { ReactComponent as Home } from '../../icons/processed/home.svg';
@@ -52,6 +54,8 @@ const iconMap = {
 	close: Close,
 	ellipsis: Ellipsis,
 	ellipsisVertical: EllipsisVertical,
+	eye: Eye,
+	eyeSlash: EyeSlash,
 	heart: Heart,
 	heartSolid: HeartSolid,
 	home: Home,

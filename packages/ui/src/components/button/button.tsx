@@ -71,7 +71,7 @@ const variants = {
 	neutral: {
 		background: '#f8f9fa',
 		text: '#212529',
-		hover: '#f8f9fa',
+		hover: '#ededed',
 	},
 };
 
@@ -107,6 +107,17 @@ const StyledButton = styled.button<ButtonProps>`
 		background-color: #d6d6d6;
 		color: #8a8a8a;
 		cursor: not-allowed;
+	}
+
+	outline: 0;
+	appearance: none;
+
+	&:is(:focus-visible, [data-focus-visible]) {
+		outline-style: solid;
+		outline-offset: 0px;
+		outline-width: '1px';
+		outline-color: 'transparent';
+		border-color: #8a8a8a;
 	}
 `;
 

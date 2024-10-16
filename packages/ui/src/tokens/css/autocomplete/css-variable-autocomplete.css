@@ -14,6 +14,7 @@
 			--breakpoints-xl: 1200px;
 			--breakpoints-xs: 0px;
 			--breakpoints-xxl: 1500px;
+			--color-green-base: #84d020;
 			--color-transparent: 'transparent';
 			--colors-black-alpha-12: rgba(0, 0, 0, 0.12);
 			--colors-black-alpha-32: rgba(0, 0, 0, 0.32);
@@ -48,7 +49,6 @@
 			--colors-brown-300: #a5917d;
 			--colors-brown-800: #965216;
 			--colors-custom-02: #fff2e6;
-			--colors-custom-03: #27ae60;
 			--colors-custom-04: #00a254;
 			--colors-custom-05: #19713e;
 			--colors-gray-100: #f8f8f8;
@@ -226,7 +226,7 @@
 			--color-status-hovered: var(--colors-orange-700, #e7a205);
 			--color-status-info: var(--colors-blue-900, #2a4365);
 			--color-status-offer: var(--colors-red-900, #bf2616);
-			--color-status-success: var(--colors-custom-03, #27ae60);
+			--color-status-success: var(--color-green-base, #84d020);
 			--color-status-surfaceBody: var(--colors-gray-100, #f8f8f8);
 			--color-status-surfaceInfo: var(--colors-custom-04, #00a254);
 			--color-status-surfaceWarning: var(--colors-custom-02, #fff2e6);

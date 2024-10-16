@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { styled } from '@linaria/react';
 import { lighten } from 'polished'; // Importa lighten desde polished
 import { InputType } from '../../types';
+import { Button } from '../button';
+import { Box } from '../../containers/box';
+import { Icon } from '../icons';
 
 /**
  * Size configurations for the input field.
@@ -122,6 +125,15 @@ export interface InputProps extends InputType {
 	isDisabled?: boolean;
 	borderRadius?: string;
 	placeholder?: string;
+	error?: boolean; // Para indicar si hay un error
+	success?: boolean; // Para indicar si la entrada es válida
+	helperText?: string; // Mensaje de ayuda o error
+	showPasswordToggle?: boolean; // Para mostrar/ocultar la contraseña
+	prefix?: React.ReactNode; // Icono o texto antes del input
+	suffix?: React.ReactNode; // Icono o texto después del input
+	onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void; // Manejar cambios
+	onFocus?: () => void; // Manejar foco
+	onBlur?: () => void; // Manejar pérdida de foco
 }
 
 /**
@@ -146,13 +158,20 @@ export interface InputProps extends InputType {
  * <InputStyled size="lg" variant="secondary" appearance="filled" />
  */
 const InputStyled = styled.input<InputProps>`
+	flex-grow: 1;
+	box-sizing: border-box;
+	padding: ${({ size }: { size?: keyof typeof sizes }) => sizes[size || 'md']};
+	padding-inline-end: ${({ showPasswordToggle }) => (showPasswordToggle ? '40px' : '0')};
+	text-align: start;
+	/* width: 100%; */
+	min-width: 0px;
+	height: 40px;
 	background-color: ${({ variant, appearance }) =>
 		appearance === 'filled' ? lighten(0.35, variants[variant || 'neutral'].tint) : 'transparent'};
 	color: ${({ variant }) => variants[variant || 'neutral'].text};
 	border-color: ${({ appearance, variant }) =>
 		appearance === 'filled' ? 'transparent' : variants[variant || 'neutral'].tint};
 	border-radius: ${({ borderRadius, appearance }) => (appearance === 'flushed' ? '0' : borderRadius || '4px')};
-	padding: ${({ size }: { size?: keyof typeof sizes }) => sizes[size || 'md']};
 	border-top-width: ${({ appearance }: { appearance?: keyof typeof appearances }) =>
 		appearances[appearance || 'outline'].borderTheRest};
 	border-right-width: ${({ appearance }: { appearance?: keyof typeof appearances }) =>
@@ -186,6 +205,49 @@ const InputStyled = styled.input<InputProps>`
 	}
 `;
 
+const StyledWrapperInput = styled.div`
+	font-family: Arial, Helvetica, sans-serif;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	width: 100%;
+	gap: 8px;
+	box-sizing: border-box;
+`;
+
+const StyledWrapperInputRow = styled.div`
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+`;
+
+const StyledWrapperButton = styled.div`
+	display: flex;
+	position: absolute;
+	right: 8px;
+	padding: 8px;
+`;
+
+const HelperText = styled.span`
+	font-size: 16px;
+`;
+
+const StyleSpanPrefix = styled.span`
+	display: flex;
+	flex-shrink: 0;
+	position: absolute;
+	left: 16px;
+	padding: 10px 0;
+`;
+
+const StyleSpanSufix = styled.span<InputProps>`
+	display: flex;
+	flex-shrink: 0;
+	position: absolute;
+	right: ${({ showPasswordToggle }) => (showPasswordToggle ? '60px' : '16px')};
+	padding: 10px 0;
+`;
+
 /**
  * A styled input component for text input.
  *
@@ -215,24 +277,91 @@ const InputStyled = styled.input<InputProps>`
  * />
  */
 export const Input: React.FC<InputProps> = ({
-	size,
 	variant,
+	appearance,
+	type = 'text',
+	size,
 	isDisabled = false,
 	borderRadius,
 	placeholder,
-	appearance,
-}) => (
-	<InputStyled
-		variant={variant}
-		appearance={appearance}
-		size={size}
-		isDisabled={isDisabled}
-		borderRadius={borderRadius}
-		placeholder={placeholder}
-		disabled={isDisabled}
-		type='text'
-		aria-disabled={isDisabled}
-	/>
-);
+	error,
+	success,
+	helperText,
+	showPasswordToggle,
+	prefix,
+	suffix,
+	onChange,
+	onFocus,
+	onBlur,
+}) => {
+	const [inputType, setInputType] = React.useState(type);
+
+	// Refs for prefix and suffix
+	const prefixRef = useRef<HTMLSpanElement>(null);
+	const suffixRef = useRef<HTMLSpanElement>(null);
+	const [paddingLeft, setPaddingLeft] = useState(0);
+	const [paddingRight, setPaddingRight] = useState(0);
+
+	const toggleShowPassword = () => {
+		setInputType(prevType => (prevType === 'password' ? 'text' : 'password'));
+	};
+
+	// Calculate dynamic padding based on the widths of prefix and suffix
+	useEffect(() => {
+		const prefixWidth = prefixRef.current?.offsetWidth || 0;
+		const suffixWidth = suffixRef.current?.offsetWidth || 0;
+
+		// Add extra space if showPasswordToggle is true
+		const toggleWidth = showPasswordToggle ? 40 : 0;
+
+		setPaddingLeft(prefixWidth + 16);
+		setPaddingRight(suffixWidth + 16 + toggleWidth);
+	}, [prefix, suffix, showPasswordToggle]);
+
+	return (
+		<StyledWrapperInput>
+			<StyledWrapperInputRow>
+				{prefix && <StyleSpanPrefix ref={prefixRef}>{prefix}</StyleSpanPrefix>}
+				<InputStyled
+					variant={variant}
+					appearance={appearance}
+					type={inputType}
+					size={size}
+					isDisabled={isDisabled}
+					borderRadius={borderRadius}
+					placeholder={placeholder}
+					disabled={isDisabled}
+					aria-disabled={isDisabled}
+					onChange={onChange}
+					onFocus={onFocus}
+					onBlur={onBlur}
+					style={{
+						paddingLeft: `${paddingLeft}px`,
+						paddingRight: `${paddingRight}px`,
+						borderColor: error ? 'red' : success ? 'green' : undefined,
+					}}
+					showPasswordToggle={showPasswordToggle}
+				/>
+				{suffix && (
+					<StyleSpanSufix showPasswordToggle={showPasswordToggle} ref={suffixRef}>
+						{suffix}
+					</StyleSpanSufix>
+				)}
+				{showPasswordToggle && (
+					<StyledWrapperButton>
+						<Button onClick={toggleShowPassword} variant='neutral' size='xs'>
+							{inputType === 'password' ? (
+								<Icon name='eye' color='white' size={16} />
+							) : (
+								<Icon name='eyeSlash' color='white' size={16} />
+							)}
+						</Button>
+					</StyledWrapperButton>
+				)}
+			</StyledWrapperInputRow>
+			{helperText && <HelperText>{helperText}</HelperText>}
+		</StyledWrapperInput>
+	);
+};
 
 Input.displayName = 'Input';

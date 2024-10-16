@@ -8,7 +8,7 @@ const App = () => (
 	<div className={rootStyles}>
 		<Box
 			display='flex'
-			flexDirection='row'
+			flexDirection='column'
 			bgcolor='red'
 			responsive={{
 				phone: {
@@ -58,14 +58,28 @@ const App = () => (
 			flexWrap='nowrap'
 			gap='20px'
 		>
-			<Input placeholder='Name' />
-			<Input variant='primary' appearance='outline' placeholder='Name' />
-			<Input variant='secondary' appearance='outline' placeholder='Name' />
+			{/* 			<Input placeholder='Password' type='password' showPasswordToggle helperText='Aqui su password' />
+			<Input appearance='outline' placeholder='Name' /> */}
+			<Input
+				variant='primary'
+				appearance='outline'
+				placeholder='Your password'
+				type='password'
+				showPasswordToggle
+				helperText='Aqui su passwor de session'
+				prefix='http://'
+				suffix='.com'
+				borderRadius='20px'
+				onFocus={() => console.log('Focus')}
+				onBlur={() => console.log('Blur')}
+			/>
+			{/* <Input variant='secondary' appearance='outline' placeholder='Name' />
 			<Input variant='tertiary' appearance='outline' placeholder='Name' />
 			<Input variant='negative' appearance='outline' placeholder='Name' />
 			<Input variant='success' appearance='outline' placeholder='Name' />
 			<Input variant='neutral' appearance='outline' placeholder='Name' />
 			<hr style={{ width: '100%' }} />
+			<Input appearance='filled' placeholder='Password' type='password' showPasswordToggle />
 			<Input variant='primary' appearance='filled' placeholder='Name' />
 			<Input variant='secondary' appearance='filled' placeholder='Name' />
 			<Input variant='tertiary' appearance='filled' placeholder='Name' />
@@ -73,7 +87,8 @@ const App = () => (
 			<Input variant='success' appearance='filled' placeholder='Name' />
 			<Input variant='neutral' appearance='filled' placeholder='Name' />
 			<hr style={{ width: '100%' }} />
-			<Input variant='primary' appearance='flushed' placeholder='Name' />
+			<Input appearance='flushed' placeholder='Name' />
+			<Input variant='primary' appearance='flushed' placeholder='Name' type='password' showPasswordToggle />
 			<Input variant='secondary' appearance='flushed' placeholder='Name' />
 			<Input variant='tertiary' appearance='flushed' placeholder='Name' />
 			<Input variant='negative' appearance='flushed' placeholder='Name' />
@@ -100,16 +115,7 @@ const App = () => (
 			<Input variant='negative' isDisabled appearance='flushed' placeholder='Name' />
 			<Input variant='success' isDisabled appearance='flushed' placeholder='Name' />
 			<Input variant='neutral' isDisabled appearance='flushed' placeholder='Name' />
-			<hr style={{ width: '100%' }} />
-
-			{/* 			<hr style={{ width: '100%' }} />
-			<Input appearance='flushed' placeholder='Phone' />
-			<hr style={{ width: '100%' }} />
-			<Input appearance='outline' isDisabled placeholder='Name' />
-			<Input appearance='filled' placeholder='Lastname' />
-			<Input appearance='flushed' placeholder='Phone' />
-			<hr style={{ width: '100%' }} />
-			<Input variant='negative' appearance='filled' placeholder='Name' /> */}
+			<hr style={{ width: '100%' }} /> */}
 		</Box>
 		<Box
 			component='section'
@@ -165,6 +171,14 @@ const App = () => (
 			<Button variant='primary' size='lg'>
 				<Icon name='heartSolid' color='white' />
 				Click
+			</Button>
+			<Button variant='secondary' size='lg'>
+				<Icon name='heartSolid' color='white' />
+				Click
+			</Button>
+			<Button variant='negative' size='lg'>
+				<Icon name='clock' color='white' />
+				Reloj
 			</Button>
 		</Box>
 	</div>
