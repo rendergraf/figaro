@@ -58,6 +58,7 @@ const App = () => (
 			flexWrap='nowrap'
 			gap='20px'
 		>
+			<Input placeholder='Name' />
 			<Input variant='primary' appearance='outline' placeholder='Name' />
 			<Input variant='secondary' appearance='outline' placeholder='Name' />
 			<Input variant='tertiary' appearance='outline' placeholder='Name' />

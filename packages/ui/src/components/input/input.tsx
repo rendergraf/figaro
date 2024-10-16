@@ -73,7 +73,7 @@ const variants = {
 		text: '#000000',
 	},
 	neutral: {
-		tint: '#676767',
+		tint: '#9d9d9d',
 		text: '#212529',
 	},
 };
@@ -147,15 +147,12 @@ export interface InputProps extends InputType {
  */
 const InputStyled = styled.input<InputProps>`
 	background-color: ${({ variant, appearance }) =>
-		appearance === 'filled' ? lighten(0.35, variants[variant || 'primary'].tint) : 'transparent'};
-
-	color: ${({ variant }) => variants[variant || 'primary'].text};
-
+		appearance === 'filled' ? lighten(0.35, variants[variant || 'neutral'].tint) : 'transparent'};
+	color: ${({ variant }) => variants[variant || 'neutral'].text};
 	border-color: ${({ appearance, variant }) =>
-		appearance === 'filled' ? 'transparent' : variants[variant || 'primary'].tint};
-
+		appearance === 'filled' ? 'transparent' : variants[variant || 'neutral'].tint};
+	border-radius: ${({ borderRadius, appearance }) => (appearance === 'flushed' ? '0' : borderRadius || '4px')};
 	padding: ${({ size }: { size?: keyof typeof sizes }) => sizes[size || 'md']};
-
 	border-top-width: ${({ appearance }: { appearance?: keyof typeof appearances }) =>
 		appearances[appearance || 'outline'].borderTheRest};
 	border-right-width: ${({ appearance }: { appearance?: keyof typeof appearances }) =>
@@ -164,7 +161,6 @@ const InputStyled = styled.input<InputProps>`
 		appearances[appearance || 'outline'].borderBottomWidth};
 	border-left-width: ${({ appearance }: { appearance?: keyof typeof appearances }) =>
 		appearances[appearance || 'outline'].borderTheRest};
-
 	cursor: ${({ isDisabled }) => (isDisabled ? 'not-allowed' : 'text')};
 	opacity: ${({ isDisabled }) => (isDisabled ? 0.4 : 1)};
 	font-size: 16px;
@@ -178,15 +174,15 @@ const InputStyled = styled.input<InputProps>`
 		outline-style: solid;
 		outline-offset: 0px;
 		outline-width: ${({ appearance }) => (appearance === 'flushed' ? '0px' : '1px')};
-		outline-color: ${({ variant }) => variants[variant || 'primary'].tint};
+		outline-color: ${({ variant }) => variants[variant || 'neutral'].tint};
 		box-shadow: ${({ appearance, variant }) =>
-			appearance === 'flushed' ? `0px 1px 0px 0px ${variants[variant || 'primary'].tint}` : 'none'};
-		border-color: ${({ variant }) => variants[variant || 'primary'].tint};
+			appearance === 'flushed' ? `0px 1px 0px 0px ${variants[variant || 'neutral'].tint}` : 'none'};
+		border-color: ${({ variant }) => variants[variant || 'neutral'].tint};
 	}
 
 	&:focus {
 		box-shadow: ${({ appearance, variant }) =>
-			appearance === 'flushed' ? `0px 1px 0px 0px ${variants[variant || 'primary'].tint}` : 'none'};
+			appearance === 'flushed' ? `0px 1px 0px 0px ${variants[variant || 'neutral'].tint}` : 'none'};
 	}
 `;
 
