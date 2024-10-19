@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 
 function rgbaToCssVariable(rgba) {
 	if (!rgba) return 'transparent';
@@ -89,11 +90,22 @@ function generateCssVariable(variable, variables) {
 	}
 }
 
-function processCollections(data) {
+function processCollections(data, outputDir) {
 	const { collections, variables } = data;
+	let allCssVariables = [];
+
+	if (!collections || typeof collections !== 'object') {
+		console.warn('No collections found or collections is not an object');
+		return allCssVariables;
+	}
 
 	Object.keys(collections).forEach(collectionId => {
 		const collection = collections[collectionId];
+		if (!collection || !collection.variableIds || !Array.isArray(collection.variableIds)) {
+			console.warn(`Invalid collection: ${collectionId}`);
+			return;
+		}
+
 		const { variableIds, name } = collection;
 		let cssVariables = [];
 
@@ -103,24 +115,70 @@ function processCollections(data) {
 				const cssVar = generateCssVariable(variable, variables);
 				if (cssVar) {
 					cssVariables.push(cssVar);
+					allCssVariables.push(cssVar);
 				}
 			}
 		});
 
-		const fileName = `${name.toLowerCase().replace(/\s+/g, '-')}.css`;
-		const fileContent = `:root {\n  ${cssVariables.join('\n  ')}\n}`;
-		fs.writeFileSync(fileName, fileContent, 'utf8');
-		console.log(`File generated: ${fileName}`);
+		if (cssVariables.length > 0) {
+			const fileName = `${name.toLowerCase().replace(/\s+/g, '-')}.css`;
+			const filePath = path.join(outputDir, fileName);
+			const fileContent = `:root {\n  ${cssVariables.join('\n  ')}\n}`;
+
+			fs.mkdirSync(outputDir, { recursive: true });
+			fs.writeFileSync(filePath, fileContent, 'utf8');
+			console.log(`File generated: ${filePath}`);
+		} else {
+			console.warn(`No CSS variables generated for collection: ${name}`);
+		}
 	});
+
+	return allCssVariables;
 }
 
-function processJsonFile(jsonFilePath) {
-	const jsonData = fs.readFileSync(jsonFilePath, 'utf8');
-	const data = JSON.parse(jsonData);
-	processCollections(data);
+function processJsonFiles(jsonDir, outputDir) {
+	let allCssVariables = [];
+	fs.readdirSync(jsonDir).forEach(file => {
+		if (path.extname(file) === '.json') {
+			const jsonPath = path.join(jsonDir, file);
+			try {
+				const jsonData = fs.readFileSync(jsonPath, 'utf8');
+				const data = JSON.parse(jsonData);
+				allCssVariables = allCssVariables.concat(processCollections(data, outputDir));
+			} catch (error) {
+				console.error(`Error processing file ${jsonPath}: ${error.message}`);
+			}
+		}
+	});
+	return allCssVariables;
 }
 
-// Example usage
-processJsonFile('./src/tokens/figma/rootStyles.json');
+function generateRootStylesTS(cssVariables, outputPath) {
+	const content = `
+import { css } from '@linaria/core';
+
+export const theme = css\`
+  :global() {
+    :root {
+      ${cssVariables.join('\n      ')}
+    }
+  }
+\`;
+`;
+
+	fs.writeFileSync(outputPath, content, 'utf8');
+	console.log(`rootStyles.ts generated: ${outputPath}`);
+}
+
+// Define input and output directories
+const jsonDir = path.join(process.cwd(), './src/tokens/figma/');
+const cssDir = path.join(process.cwd(), './src/tokens/css/autocomplete/');
+const rootStylesPath = path.join(process.cwd(), './src/tokens/css/rootStyles.ts');
+
+// Process all JSON files in the input directory and generate individual CSS files
+const allCssVariables = processJsonFiles(jsonDir, cssDir);
+
+// Generate rootStyles.ts with all CSS variables
+generateRootStylesTS(allCssVariables, rootStylesPath);
 
 console.log('Processing complete.');
