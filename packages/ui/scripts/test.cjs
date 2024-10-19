@@ -43,10 +43,15 @@ function resolveVariableAlias(variableId, variables, visited = new Set()) {
 	const value = valuesByMode[modeId];
 
 	if (value && value.type === 'VARIABLE_ALIAS') {
-		return resolveVariableAlias(value.id, variables, visited);
+		const resolvedAlias = resolveVariableAlias(value.id, variables, visited);
+		return {
+			aliasId: value.id,
+			value: resolvedAlias.value,
+			resolvedType: resolvedAlias.resolvedType,
+		};
 	}
 
-	return value;
+	return { value, resolvedType: variable.resolvedType };
 }
 
 function generateCssVariable(variable, variables) {
@@ -55,14 +60,15 @@ function generateCssVariable(variable, variables) {
 	let cssVarValue;
 
 	try {
-		const value = resolveVariableAlias(variable.id, variables);
+		const resolvedValue = resolveVariableAlias(variable.id, variables);
+		const value = resolvedValue.value;
 
-		switch (resolvedType) {
+		switch (resolvedValue.resolvedType) {
 			case 'COLOR':
 				cssVarValue = rgbaToCssVariable(value);
 				break;
 			case 'FLOAT':
-				cssVarValue = value.toString();
+				cssVarValue = typeof value === 'number' ? value.toString() : value;
 				break;
 			case 'STRING':
 				cssVarValue = `"${value}"`;
@@ -71,7 +77,12 @@ function generateCssVariable(variable, variables) {
 				return null;
 		}
 
-		return `${cssVarName}: ${cssVarValue};`;
+		if (resolvedValue.aliasId) {
+			const aliasName = formatVariableName(variables[resolvedValue.aliasId].name);
+			return `${cssVarName}: var(${aliasName}, ${cssVarValue});`;
+		} else {
+			return `${cssVarName}: ${cssVarValue};`;
+		}
 	} catch (error) {
 		console.warn(`Warning: ${error.message} for variable ${name}`);
 		return null;

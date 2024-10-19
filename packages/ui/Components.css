@@ -1,9 +1,9 @@
 :root {
-  --button-primary: #3182ce;
-  --button-secondary: #d69e2e;
-  --button-tertiary: rgba(255, 255, 255, 0.00);
-  --button-neutral: #48bb78;
-  --button-success: #48bb78;
-  --button-error: #e53e3e;
-  --button-info: #00b5d8;
+  --button-primary: var(--surface-primary, #3182ce);
+  --button-secondary: var(--surface-secondary, #d69e2e);
+  --button-tertiary: var(--surface-transparent, rgba(255, 255, 255, 0.00));
+  --button-neutral: var(--surface-success, #48bb78);
+  --button-success: var(--surface-success, #48bb78);
+  --button-error: var(--surface-error, #e53e3e);
+  --button-info: var(--surface-info, #00b5d8);
 }
