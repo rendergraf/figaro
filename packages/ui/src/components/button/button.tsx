@@ -158,6 +158,7 @@ export const Button: React.FC<ButtonProps> = ({
 	borderRadius,
 	onClick,
 	children,
+	...props
 }) => (
 	<StyledButton
 		size={size}
@@ -170,6 +171,7 @@ export const Button: React.FC<ButtonProps> = ({
 		aria-busy={isLoading}
 		data-loading={isLoading ? true : undefined}
 		aria-label={isLoading ? 'Loading...' : undefined}
+		{...props}
 	>
 		{isLoading ? <Spinner /> : children}
 	</StyledButton>

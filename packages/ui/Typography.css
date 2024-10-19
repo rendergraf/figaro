@@ -1,0 +1,25 @@
+:root {
+  --font-family-title: "Roboto";
+  --font-family-body: "Roboto";
+  --font-weight-thin: "100";
+  --font-weight-extra-ligth: "200";
+  --font-weight-ligth: "300";
+  --font-weight-regular: "400";
+  --font-weight-medium: "500";
+  --font-weight-semi-bold: "600";
+  --font-weight-bold: "700";
+  --font-weight-extra-bold: "800";
+  --font-weight-black: "900";
+  --font-size-xs: 12;
+  --font-size-sm: 14;
+  --font-size-md: 16;
+  --font-size-lg: 18;
+  --font-size-h6: 20;
+  --font-size-h5: 24;
+  --font-size-h4: 28;
+  --font-size-h3: 36;
+  --font-size-h2: 39;
+  --font-size-h1: 48;
+  --font-line-height-body: 0;
+  --font-line-height-heading: 0;
+}

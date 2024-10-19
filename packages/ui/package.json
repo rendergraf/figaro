@@ -11,6 +11,7 @@
     "build": "node scripts/generate-index.cjs && pnpm build-tokens",
     "build-dist": "pnpm build && tsup index.ts --dts",
     "build-tokens": "node ./scripts/generate-tokens.cjs",
+    "tokens": "node ./scripts/test.cjs",
     "generate-icons": "node ./scripts/generate-icons.cjs",
     "lint": "eslint \"**/*.{tsx,tx}\""
   },

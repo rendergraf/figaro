@@ -61,6 +61,7 @@ const App = () => (
 			{/* 			<Input placeholder='Password' type='password' showPasswordToggle helperText='Aqui su password' />
 			<Input appearance='outline' placeholder='Name' /> */}
 			<Input
+				size='md'
 				variant='primary'
 				appearance='outline'
 				placeholder='Your password'
@@ -69,7 +70,21 @@ const App = () => (
 				helperText='Aqui su passwor de session'
 				prefix='http://'
 				suffix='.com'
-				borderRadius='20px'
+				/* borderRadius='20px' */
+				onFocus={() => console.log('Focus')}
+				onBlur={() => console.log('Blur')}
+			/>
+			<Input
+				size='xs'
+				variant='primary'
+				appearance='outline'
+				placeholder='Your password'
+				type='password'
+				showPasswordToggle
+				helperText='Aqui su passwor de session'
+				prefix='http://'
+				suffix='.com'
+				/* borderRadius='20px' */
 				onFocus={() => console.log('Focus')}
 				onBlur={() => console.log('Blur')}
 			/>

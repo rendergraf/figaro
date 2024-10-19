@@ -28,10 +28,10 @@ function formatVariableName(name) {
 
 // Función para resolver alias
 function resolveAlias(variable, allVariables) {
-	const aliasId = variable.valuesByMode['1:1']?.id;
+	const aliasId = variable.valuesByMode['9:0']?.id;
 	if (aliasId) {
 		const aliasVariable = allVariables.find(v => v.id === aliasId);
-		return aliasVariable ? aliasVariable.resolvedValuesByMode['1:1'].resolvedValue : undefined;
+		return aliasVariable ? aliasVariable.resolvedValuesByMode['9:0'].resolvedValue : undefined;
 	}
 	return undefined;
 }
@@ -40,7 +40,7 @@ function resolveAlias(variable, allVariables) {
 function generateCssVariable(variable, allVariables) {
 	const { name, type, resolvedValuesByMode } = variable;
 	const resolvedValue = getResolvedValue(variable, allVariables);
-	const aliasName = resolvedValuesByMode['1:1']?.aliasName;
+	const aliasName = resolvedValuesByMode['9:0']?.aliasName;
 
 	if (type === 'COLOR') {
 		return handleColorType(name, aliasName, resolvedValue);
@@ -58,7 +58,7 @@ function generateCssVariable(variable, allVariables) {
 }
 
 function getResolvedValue(variable, allVariables) {
-	const value = variable.resolvedValuesByMode['1:1'] || {};
+	const value = variable.resolvedValuesByMode['9:0'] || {};
 	return value.resolvedValue || resolveAlias(variable, allVariables);
 }
 
@@ -121,6 +121,8 @@ function generateCssVariables(primitives) {
 function processFile(jsonFilePath, varsCssPath, outputFilePath) {
 	const jsonData = fs.readFileSync(jsonFilePath, 'utf8');
 	const primitives = JSON.parse(jsonData);
+
+	console.log(primitives);
 
 	// Genera las variables CSS
 	const cssContent = generateCssVariables(primitives);
