@@ -60,10 +60,14 @@ const App = () => (
 		>
 			{/* 			<Input placeholder='Password' type='password' showPasswordToggle helperText='Aqui su password' />
 			<Input appearance='outline' placeholder='Name' /> */}
+			<Button variant='primary' size='lg'>
+				<Icon name='clock' color='white' />
+				Reloj
+			</Button>
 			<Input
 				size='md'
 				variant='primary'
-				appearance='outline'
+				appearance='filled'
 				placeholder='Your password'
 				type='password'
 				showPasswordToggle
@@ -76,8 +80,8 @@ const App = () => (
 			/>
 			<Input
 				size='xs'
-				variant='primary'
-				appearance='outline'
+				variant='secondary'
+				appearance='filled'
 				placeholder='Your password'
 				type='password'
 				showPasswordToggle
@@ -187,11 +191,11 @@ const App = () => (
 				<Icon name='heartSolid' color='white' />
 				Click
 			</Button>
-			<Button variant='secondary' size='lg'>
+			<Button variant='tertiary' size='lg'>
 				<Icon name='heartSolid' color='white' />
 				Click
 			</Button>
-			<Button variant='negative' size='lg'>
+			<Button variant='error' size='lg'>
 				<Icon name='clock' color='white' />
 				Reloj
 			</Button>

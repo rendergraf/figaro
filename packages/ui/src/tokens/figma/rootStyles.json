@@ -2027,19 +2027,6 @@
       },
       "variableCollectionId": "VariableCollectionId:9:114"
     },
-    "VariableID:15:250": {
-      "id": "VariableID:15:250",
-      "key": "2ed656dd937f0e6df66a051971060cc25bc73148",
-      "name": "surface/danger",
-      "resolvedType": "COLOR",
-      "valuesByMode": {
-        "15:0": {
-          "type": "VARIABLE_ALIAS",
-          "id": "VariableID:9:193"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:15:249"
-    },
     "VariableID:15:251": {
       "id": "VariableID:15:251",
       "key": "c70052b3a9c9270da3ee442cdd2738639cd34c27",
@@ -2087,7 +2074,7 @@
       "valuesByMode": {
         "15:0": {
           "type": "VARIABLE_ALIAS",
-          "id": "VariableID:9:177"
+          "id": "VariableID:9:200"
         }
       },
       "variableCollectionId": "VariableCollectionId:15:249"
@@ -2672,110 +2659,6 @@
       },
       "variableCollectionId": "VariableCollectionId:15:249"
     },
-    "VariableID:22:126": {
-      "id": "VariableID:22:126",
-      "key": "cd71922f2e1cc58de776620d8a14a19383069f25",
-      "name": "components/button/primary",
-      "resolvedType": "COLOR",
-      "valuesByMode": {
-        "15:0": {
-          "type": "VARIABLE_ALIAS",
-          "id": "VariableID:9:186"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:15:249"
-    },
-    "VariableID:22:127": {
-      "id": "VariableID:22:127",
-      "key": "1d7e7d66592a960cccf1c4e2ac3f37d7544c1b26",
-      "name": "components/button/primary-hover",
-      "resolvedType": "COLOR",
-      "valuesByMode": {
-        "15:0": {
-          "type": "VARIABLE_ALIAS",
-          "id": "VariableID:9:154"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:15:249"
-    },
-    "VariableID:22:128": {
-      "id": "VariableID:22:128",
-      "key": "fc24f8eb78a0433e77a880321850027567b03abc",
-      "name": "components/button/primary-focused",
-      "resolvedType": "COLOR",
-      "valuesByMode": {
-        "15:0": {
-          "type": "VARIABLE_ALIAS",
-          "id": "VariableID:9:222"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:15:249"
-    },
-    "VariableID:22:129": {
-      "id": "VariableID:22:129",
-      "key": "112b8c3de2cff68ca0a8c5bad75f8b5e15c57eb0",
-      "name": "components/button/primary-pressed",
-      "resolvedType": "COLOR",
-      "valuesByMode": {
-        "15:0": {
-          "type": "VARIABLE_ALIAS",
-          "id": "VariableID:9:173"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:15:249"
-    },
-    "VariableID:22:130": {
-      "id": "VariableID:22:130",
-      "key": "d22b4ab2435dec2df0344202f9803cb6182792dc",
-      "name": "components/button/secondary",
-      "resolvedType": "COLOR",
-      "valuesByMode": {
-        "15:0": {
-          "type": "VARIABLE_ALIAS",
-          "id": "VariableID:9:206"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:15:249"
-    },
-    "VariableID:22:131": {
-      "id": "VariableID:22:131",
-      "key": "0b341b013c0cb66f3255f0b47014d4fee350976f",
-      "name": "components/button/secondary-hover",
-      "resolvedType": "COLOR",
-      "valuesByMode": {
-        "15:0": {
-          "type": "VARIABLE_ALIAS",
-          "id": "VariableID:9:207"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:15:249"
-    },
-    "VariableID:22:132": {
-      "id": "VariableID:22:132",
-      "key": "67601c6ba594884810631a69ebeac9367a43b0dd",
-      "name": "components/button/secondary-focused",
-      "resolvedType": "COLOR",
-      "valuesByMode": {
-        "15:0": {
-          "type": "VARIABLE_ALIAS",
-          "id": "VariableID:9:204"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:15:249"
-    },
-    "VariableID:22:133": {
-      "id": "VariableID:22:133",
-      "key": "8c597573d62056fb9c2459fb6b6278b2cbf361c3",
-      "name": "components/button/secondary-pressed",
-      "resolvedType": "COLOR",
-      "valuesByMode": {
-        "15:0": {
-          "type": "VARIABLE_ALIAS",
-          "id": "VariableID:9:208"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:15:249"
-    },
     "VariableID:23:73": {
       "id": "VariableID:23:73",
       "key": "3804a8b0f38d7caf43c16f71d509e04079520635",
@@ -2805,21 +2688,6 @@
         "15:0": {
           "type": "VARIABLE_ALIAS",
           "id": "VariableID:23:221"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:15:249"
-    },
-    "VariableID:23:76": {
-      "id": "VariableID:23:76",
-      "key": "c75752a9debb60e8d14c0887cec44c40b1c6f782",
-      "name": "surface/transparent",
-      "resolvedType": "COLOR",
-      "valuesByMode": {
-        "15:0": {
-          "r": 1,
-          "g": 1,
-          "b": 1,
-          "a": 0
         }
       },
       "variableCollectionId": "VariableCollectionId:15:249"
@@ -3349,23 +3217,10 @@
       },
       "variableCollectionId": "VariableCollectionId:9:114"
     },
-    "VariableID:34:146": {
-      "id": "VariableID:34:146",
-      "key": "a393498984b76e7f1bbab2f01a3219a3095ae16d",
-      "name": "button/primary",
-      "resolvedType": "COLOR",
-      "valuesByMode": {
-        "24:0": {
-          "type": "VARIABLE_ALIAS",
-          "id": "VariableID:15:253"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:24:251"
-    },
     "VariableID:34:147": {
       "id": "VariableID:34:147",
       "key": "a0725d09e7ba80761394163dab2bd131109086e7",
-      "name": "button/secondary",
+      "name": "button/secondary/surface",
       "resolvedType": "COLOR",
       "valuesByMode": {
         "24:0": {
@@ -3378,7 +3233,7 @@
     "VariableID:34:148": {
       "id": "VariableID:34:148",
       "key": "624825f3a5d099f4b89c99bd462f72492d96e81c",
-      "name": "button/tertiary",
+      "name": "button/tertiary/surface",
       "resolvedType": "COLOR",
       "valuesByMode": {
         "24:0": {
@@ -3391,7 +3246,7 @@
     "VariableID:34:149": {
       "id": "VariableID:34:149",
       "key": "6f4b05987e4a20a506cdaed2c398c1b86ebfd78f",
-      "name": "button/error",
+      "name": "button/error/surface",
       "resolvedType": "COLOR",
       "valuesByMode": {
         "24:0": {
@@ -3404,7 +3259,7 @@
     "VariableID:34:150": {
       "id": "VariableID:34:150",
       "key": "1fba7a70e817723ae743135a2143614486290b5f",
-      "name": "button/success",
+      "name": "button/success/surface",
       "resolvedType": "COLOR",
       "valuesByMode": {
         "24:0": {
@@ -3417,12 +3272,12 @@
     "VariableID:34:151": {
       "id": "VariableID:34:151",
       "key": "2b85583ac0fcdd78db4318f99eb991f20e313cf3",
-      "name": "button/neutral",
+      "name": "button/neutral/furface",
       "resolvedType": "COLOR",
       "valuesByMode": {
         "24:0": {
           "type": "VARIABLE_ALIAS",
-          "id": "VariableID:15:251"
+          "id": "VariableID:34:153"
         }
       },
       "variableCollectionId": "VariableCollectionId:24:251"
@@ -3430,7 +3285,7 @@
     "VariableID:34:152": {
       "id": "VariableID:34:152",
       "key": "96bede96678183c2c65958bd2e9243de35672d47",
-      "name": "button/info",
+      "name": "button/info/surface",
       "resolvedType": "COLOR",
       "valuesByMode": {
         "24:0": {
@@ -3444,6 +3299,123 @@
       "id": "VariableID:34:153",
       "key": "f084cde1d55bd44e8dc012624ce2bd82af70d3ba",
       "name": "surface/neutral",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "15:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:9:142"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:15:249"
+    },
+    "VariableID:37:148": {
+      "id": "VariableID:37:148",
+      "key": "cb09e237c9dcd05f31ef2b8afd87b5a3d5dc7ef0",
+      "name": "button/primary/surface",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:15:253"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:37:149": {
+      "id": "VariableID:37:149",
+      "key": "8a1e4dc0386bc1b9cd80881a74ad70011462d578",
+      "name": "button/primary/text",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:9:151"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:37:153": {
+      "id": "VariableID:37:153",
+      "key": "23f78008dae0af1f2a8e7ab57b0c6a7a75b15525",
+      "name": "button/secondary/text",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:9:151"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:37:154": {
+      "id": "VariableID:37:154",
+      "key": "41b9622d7854e9b2b66362a43ece317f3c152053",
+      "name": "button/tertiary/text",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:9:150"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:37:155": {
+      "id": "VariableID:37:155",
+      "key": "285a979dcb3f9cade5372f4caf910979dd65e3c8",
+      "name": "button/neutral/text",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:9:151"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:37:156": {
+      "id": "VariableID:37:156",
+      "key": "ba9ebeb6a8d36dcdb7952d5c31580815d0bffc35",
+      "name": "button/success/text",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:9:151"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:37:157": {
+      "id": "VariableID:37:157",
+      "key": "6754c9fa67c3da29daffe3cb8b79531c84d5c338",
+      "name": "button/error/text",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:9:151"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:37:158": {
+      "id": "VariableID:37:158",
+      "key": "1b55a7896e5e6c25cb1f09de1ad50e814e2bfa35",
+      "name": "button/info/text",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:9:151"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:37:159": {
+      "id": "VariableID:37:159",
+      "key": "2b1e1445daa7b58628fc99cd21afa32af3ebad8d",
+      "name": "surface/tertiary",
       "resolvedType": "COLOR",
       "valuesByMode": {
         "15:0": {
@@ -3672,15 +3644,14 @@
       },
       "name": "Brand Tokens",
       "variableIds": [
-        "VariableID:15:250",
-        "VariableID:15:251",
         "VariableID:15:253",
         "VariableID:15:254",
+        "VariableID:37:159",
+        "VariableID:34:153",
+        "VariableID:15:251",
         "VariableID:15:255",
         "VariableID:15:257",
         "VariableID:15:256",
-        "VariableID:34:153",
-        "VariableID:23:76",
         "VariableID:22:103",
         "VariableID:22:104",
         "VariableID:22:105",
@@ -3710,15 +3681,7 @@
         "VariableID:22:122",
         "VariableID:22:123",
         "VariableID:22:124",
-        "VariableID:22:125",
-        "VariableID:22:126",
-        "VariableID:22:127",
-        "VariableID:22:128",
-        "VariableID:22:129",
-        "VariableID:22:130",
-        "VariableID:22:131",
-        "VariableID:22:132",
-        "VariableID:22:133"
+        "VariableID:22:125"
       ]
     },
     "VariableCollectionId:22:73": {
@@ -3770,13 +3733,20 @@
       },
       "name": "Components",
       "variableIds": [
-        "VariableID:34:146",
+        "VariableID:37:148",
+        "VariableID:37:149",
         "VariableID:34:147",
+        "VariableID:37:153",
         "VariableID:34:148",
         "VariableID:34:151",
+        "VariableID:37:154",
         "VariableID:34:150",
+        "VariableID:37:155",
         "VariableID:34:149",
-        "VariableID:34:152"
+        "VariableID:37:157",
+        "VariableID:34:152",
+        "VariableID:37:158",
+        "VariableID:37:156"
       ]
     }
   }

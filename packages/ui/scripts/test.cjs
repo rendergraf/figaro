@@ -69,7 +69,7 @@ function generateCssVariable(variable, variables) {
 				cssVarValue = rgbaToCssVariable(value);
 				break;
 			case 'FLOAT':
-				cssVarValue = typeof value === 'number' ? value.toString() : value;
+				cssVarValue = typeof value === 'number' ? value.toString() + 'px' : value;
 				break;
 			case 'STRING':
 				cssVarValue = `"${value}"`;

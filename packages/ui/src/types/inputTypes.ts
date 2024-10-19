@@ -1,4 +1,4 @@
-import { Size, Appearance, Variant } from './types';
+import { Appearance, Variant } from './types';
 
 type InputFieldType = 'text' | 'password' | 'email' | 'number' | 'tel' | 'url';
 
@@ -10,6 +10,6 @@ type InputFieldType = 'text' | 'password' | 'email' | 'number' | 'tel' | 'url';
  * @interface InputProps
  * @extends {InputType}
  */
-export interface InputType extends Variant, Size, Appearance {
+export interface InputType extends Variant, Appearance {
 	type?: InputFieldType;
 }

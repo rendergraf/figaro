@@ -1,4 +1,4 @@
-export const appearances = {
+/* export const appearances = {
 	outline: {
 		borderBottomWidth: '1px',
 		borderTheRest: '1px',
@@ -11,53 +11,59 @@ export const appearances = {
 		borderBottomWidth: '1px',
 		borderTheRest: '0px',
 	},
+}; */
+
+export const createAppearance = (borderBottomWidth: string, borderTheRest: string) => ({
+	borderBottomWidth,
+	borderTheRest,
+});
+
+export const appearances = {
+	outline: createAppearance('1px', '1px'),
+	filled: createAppearance('1px', '1px'),
+	flushed: createAppearance('1px', '0px'),
 };
 
+export const createVariant = (name: string) => ({
+	surface: `var(--button-${name}-surface)`,
+	text: `var(--button-${name}-text)`,
+	hover: `color-mix(in srgb, var(--button-${name}-surface) 10%, var(--color-transparent))`,
+});
+
 export const variants = {
-	primary: {
-		surface: 'var(--color-blue-500)',
-		text: '#000f42',
-		hover: '#2d5fd5',
-	},
-	secondary: {
-		surface: '#ffd000',
-		text: '#000000',
-		hover: '#5a6268',
-	},
-	tertiary: {
-		surface: '#bd42f6',
-		text: '#61007b',
-		hover: '--color-transparent)',
-		border: '1px solid #426cf6',
-	},
-	neutral: {
-		surface: '#f8f9fa',
-		text: '#212529',
-		hover: '#ededed',
-	},
-	success: {
-		surface: '#00bf29',
-		text: '#000000',
-		hover: '#218838',
-	},
-	error: {
-		surface: '#dc3545',
-		text: '#4d0000',
-		hover: '#c82333',
-	},
-	info: {
-		surface: '#f8f9fa',
-		text: '#212529',
-		hover: '#ededed',
-	},
+	primary: createVariant('primary'),
+	secondary: createVariant('secondary'),
+	tertiary: createVariant('tertiary'),
+	neutral: createVariant('neutral'),
+	success: createVariant('success'),
+	warning: createVariant('warning'),
+	error: createVariant('error'),
+	info: createVariant('info'),
+};
+
+export const createPaddingSizes = (padding: string) => {
+	const values = padding.split(' ');
+
+	switch (values.length) {
+		case 1:
+			return { top: values[0], right: values[0], bottom: values[0], left: values[0] };
+		case 2:
+			return { top: values[0], right: values[1], bottom: values[0], left: values[1] };
+		case 3:
+			return { top: values[0], right: values[1], bottom: values[2], left: values[1] };
+		case 4:
+			return { top: values[0], right: values[1], bottom: values[2], left: values[3] };
+		default:
+			throw new Error('Formato de padding inválido');
+	}
 };
 
 export const paddingSizes = {
-	xs: { x: '2px', y: '4px' },
-	sm: { x: '3px', y: '6px' },
-	md: { x: '4px', y: '8px' },
-	lg: { x: '6px', y: '12px' },
-	xl: { x: '8px', y: '16px' },
+	xs: createPaddingSizes('2px 4px'),
+	sm: createPaddingSizes('3px 6px'),
+	md: createPaddingSizes('4px 8px'),
+	lg: createPaddingSizes('6px 12px'),
+	xl: createPaddingSizes('8px 16px'),
 };
 
 export const fontSizes = {

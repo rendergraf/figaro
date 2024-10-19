@@ -1,6 +1,7 @@
 import React from 'react';
 import { styled } from '@linaria/react';
 import { ButtonType } from '../../types';
+import { createPaddingSizes } from '../../styles';
 
 /**
  * Props for the Button component.
@@ -19,16 +20,16 @@ export interface ButtonProps extends ButtonType {
 	isLoading?: boolean;
 	borderRadius?: string;
 	onClick?: () => void;
+	className?: string;
 	children: React.ReactNode;
 }
 
-// Tamaños de los botones.
-const sizes = {
-	xs: '4px 8px',
-	sm: '6px 12px',
-	md: '8px 16px',
-	lg: '10px 20px',
-	xl: '12px 24px',
+const paddingSizes = {
+	xs: createPaddingSizes('4px 8px'),
+	sm: createPaddingSizes('6px 12px'),
+	md: createPaddingSizes('8px 16px'),
+	lg: createPaddingSizes('10px 20px'),
+	xl: createPaddingSizes('12px 24px'),
 };
 
 // Tamaños de fuente para los botones.
@@ -43,33 +44,44 @@ const fontSizes = {
 // Variantes de estilo para los botones.
 const variants = {
 	primary: {
-		background: '#426cf6',
+		surface: 'var(--button-primary)',
 		text: 'white',
-		hover: '#2d5fd5',
+		hover: 'color-mix(in srgb, var(--button-primary) 90%, var(--color-transparent))',
 	},
 	secondary: {
-		background: '#6c757d',
+		surface: 'var(--button-secondary)',
 		text: 'white',
 		hover: '#5a6268',
 	},
 	tertiary: {
-		background: 'transparent',
+		surface: 'var(--button-tertiary)',
 		text: '#426cf6',
 		hover: 'transparent',
 		border: '1px solid #426cf6',
 	},
-	negative: {
-		background: '#dc3545',
-		text: 'white',
-		hover: '#c82333',
-	},
 	success: {
-		background: 'var(--color-status-success)',
+		surface: 'var(--color-status-success)',
 		text: 'white',
 		hover: '#218838',
 	},
+	warning: {
+		surface: 'var(--color-status-success)',
+		text: 'white',
+		hover: '#218838',
+	},
+	error: {
+		surface: '#dc3545',
+		text: 'white',
+		hover: '#c82333',
+	},
+	info: {
+		surface: 'var(--button-tertiary)',
+		text: '#426cf6',
+		hover: 'transparent',
+		border: '1px solid #426cf6',
+	},
 	neutral: {
-		background: '#f8f9fa',
+		surface: '#f8f9fa',
 		text: '#212529',
 		hover: '#ededed',
 	},
@@ -82,9 +94,12 @@ const variants = {
  * @returns {JSX.Element} El botón estilizado.
  */
 const StyledButton = styled.button<ButtonProps>`
-	background-color: ${({ variant }) => variants[variant || 'primary'].background};
+	background-color: ${({ variant }) => variants[variant || 'primary'].surface};
 	color: ${({ variant }) => variants[variant || 'primary'].text};
-	padding: ${({ size }) => sizes[size || 'md']};
+	padding: ${({ size }) => {
+		const { top, right, bottom, left } = paddingSizes[size || 'xs'];
+		return `${top} ${right} ${bottom} ${left}`;
+	}};
 	font-size: ${({ size }) => fontSizes[size || 'md']};
 	border-radius: ${({ borderRadius }) => borderRadius || '4px'};
 	border: ${({ variant }) => (variant === 'tertiary' ? variants.tertiary.border : 'none')};
@@ -100,7 +115,7 @@ const StyledButton = styled.button<ButtonProps>`
 
 	&:hover {
 		background-color: ${({ variant, isDisabled }) =>
-			isDisabled ? variants[variant || 'primary'].background : variants[variant || 'primary'].hover};
+			isDisabled ? variants[variant || 'primary'].surface : variants[variant || 'primary'].hover};
 	}
 
 	&:disabled {
@@ -157,6 +172,7 @@ export const Button: React.FC<ButtonProps> = ({
 	isLoading = false,
 	borderRadius,
 	onClick,
+	className,
 	children,
 	...props
 }) => (
@@ -171,6 +187,7 @@ export const Button: React.FC<ButtonProps> = ({
 		aria-busy={isLoading}
 		data-loading={isLoading ? true : undefined}
 		aria-label={isLoading ? 'Loading...' : undefined}
+		className={className}
 		{...props}
 	>
 		{isLoading ? <Spinner /> : children}

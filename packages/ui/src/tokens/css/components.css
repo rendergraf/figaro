@@ -1,9 +1,15 @@
 :root {
-  --button-primary: var(--surface-primary, #3182ce);
-  --button-secondary: var(--surface-secondary, #d69e2e);
-  --button-tertiary: var(--surface-transparent, rgba(255, 255, 255, 0.00));
-  --button-neutral: var(--surface-success, #48bb78);
-  --button-success: var(--surface-success, #48bb78);
-  --button-error: var(--surface-error, #e53e3e);
-  --button-info: var(--surface-info, #00b5d8);
+  --button-primary-surface: var(--surface-primary, #3182ce);
+  --button-primary-text: var(--color-white, #ffffff);
+  --button-secondary-surface: var(--surface-secondary, #d69e2e);
+  --button-secondary-text: var(--color-white, #ffffff);
+  --button-neutral-furface: var(--surface-neutral, #edf2f7);
+  --button-tertiary-text: var(--color-black, #000000);
+  --button-success-surface: var(--surface-success, #48bb78);
+  --button-neutral-text: var(--color-white, #ffffff);
+  --button-error-surface: var(--surface-error, #e53e3e);
+  --button-error-text: var(--color-white, #ffffff);
+  --button-info-surface: var(--surface-info, #00b5d8);
+  --button-info-text: var(--color-white, #ffffff);
+  --button-success-text: var(--color-white, #ffffff);
 }
