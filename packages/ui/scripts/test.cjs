@@ -153,14 +153,24 @@ function processJsonFiles(jsonDir, outputDir) {
 	return allCssVariables;
 }
 
+function removeDuplicateCssVariables(cssVariables) {
+	const uniqueVariables = new Map();
+	cssVariables.forEach(variable => {
+		const [name, value] = variable.split(':');
+		uniqueVariables.set(name.trim(), value.trim());
+	});
+	return Array.from(uniqueVariables).map(([name, value]) => `${name}: ${value}`);
+}
+
 function generateRootStylesTS(cssVariables, outputPath) {
+	const uniqueCssVariables = removeDuplicateCssVariables(cssVariables);
 	const content = `
 import { css } from '@linaria/core';
 
-export const theme = css\`
+export const rootStyles = css\`
   :global() {
     :root {
-      ${cssVariables.join('\n      ')}
+      ${uniqueCssVariables.join('\n      ')}
     }
   }
 \`;
@@ -172,13 +182,13 @@ export const theme = css\`
 
 // Define input and output directories
 const jsonDir = path.join(process.cwd(), './src/tokens/figma/');
-const cssDir = path.join(process.cwd(), './src/tokens/css/autocomplete/');
+const cssDir = path.join(process.cwd(), './src/tokens/css/');
 const rootStylesPath = path.join(process.cwd(), './src/tokens/css/rootStyles.ts');
 
 // Process all JSON files in the input directory and generate individual CSS files
 const allCssVariables = processJsonFiles(jsonDir, cssDir);
 
-// Generate rootStyles.ts with all CSS variables
+// Generate rootStyles.ts with all unique CSS variables
 generateRootStylesTS(allCssVariables, rootStylesPath);
 
 console.log('Processing complete.');
