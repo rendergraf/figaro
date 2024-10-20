@@ -3238,7 +3238,7 @@
       "valuesByMode": {
         "24:0": {
           "type": "VARIABLE_ALIAS",
-          "id": "VariableID:9:187"
+          "id": "VariableID:9:142"
         }
       },
       "variableCollectionId": "VariableCollectionId:24:251"
@@ -3355,7 +3355,7 @@
       "valuesByMode": {
         "24:0": {
           "type": "VARIABLE_ALIAS",
-          "id": "VariableID:9:151"
+          "id": "VariableID:9:150"
         }
       },
       "variableCollectionId": "VariableCollectionId:24:251"
@@ -3797,7 +3797,7 @@
       "valuesByMode": {
         "24:0": {
           "type": "VARIABLE_ALIAS",
-          "id": "VariableID:23:221"
+          "id": "VariableID:9:187"
         }
       },
       "variableCollectionId": "VariableCollectionId:24:251"
@@ -3866,6 +3866,16 @@
         }
       },
       "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:42:154": {
+      "id": "VariableID:42:154",
+      "key": "f877fa47c1864dff719fc6d61b77a4887ea95edc",
+      "name": "z-index/first",
+      "resolvedType": "FLOAT",
+      "valuesByMode": {
+        "9:0": 1
+      },
+      "variableCollectionId": "VariableCollectionId:9:114"
     }
   },
   "collections": {
@@ -3993,16 +4003,16 @@
         "VariableID:9:151",
         "VariableID:23:221",
         "VariableID:15:83",
-        "VariableID:26:231",
         "VariableID:28:234",
-        "VariableID:26:232",
-        "VariableID:26:228",
-        "VariableID:26:236",
-        "VariableID:26:413",
+        "VariableID:26:231",
         "VariableID:26:245",
-        "VariableID:26:249",
         "VariableID:15:84",
+        "VariableID:26:413",
+        "VariableID:26:228",
+        "VariableID:26:249",
         "VariableID:26:224",
+        "VariableID:26:232",
+        "VariableID:26:236",
         "VariableID:26:250",
         "VariableID:26:251",
         "VariableID:26:246",
@@ -4050,8 +4060,9 @@
         "VariableID:15:88",
         "VariableID:15:89",
         "VariableID:15:235",
-        "VariableID:15:240",
         "VariableID:15:241",
+        "VariableID:15:240",
+        "VariableID:42:154",
         "VariableID:15:243",
         "VariableID:15:248",
         "VariableID:15:246",

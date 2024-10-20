@@ -1,5 +1,5 @@
 import { styled } from '@linaria/react';
-import { createVariantButton, createPadding } from '../../styles';
+import { createVariantButton, createPadding, FlexMixin, fontSizes } from '../../styles';
 import { ButtonProps } from './types';
 
 const paddingSizes = {
@@ -8,15 +8,6 @@ const paddingSizes = {
 	md: createPadding('8px 16px'),
 	lg: createPadding('10px 20px'),
 	xl: createPadding('12px 24px'),
-};
-
-// Tamaños de fuente para los botones.
-const fontSizes = {
-	xs: '12px',
-	sm: '14px',
-	md: '16px',
-	lg: '18px',
-	xl: '20px',
 };
 
 export const variants = {
@@ -43,21 +34,33 @@ export const Button = styled.button<ButtonProps>`
 		return `${top} ${right} ${bottom} ${left}`;
 	}};
 	font-size: ${({ size }) => fontSizes[size || 'md']};
-	border-radius: ${({ borderRadius }) => borderRadius || '4px'};
+	text-transform: uppercase;
+	border-radius: ${({ borderRadius }) => borderRadius || 'var(--half-unit)'};
 	border-color: ${({ variant }) => variants[variant || 'primary'].borderColor};
 	cursor: ${({ isDisabled }) => (isDisabled ? 'not-allowed' : 'pointer')};
 	opacity: ${({ isDisabled }) => (isDisabled ? 0.6 : 1)};
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 8px;
+	${FlexMixin({
+		direction: 'row',
+		align: 'center',
+		justify: 'center',
+		gap: '8px',
+	})};
 	transition:
 		background-color 0.3s,
-		color 0.3s;
+		color 0.3s,
+		border-color 0.3s;
 
 	&:hover {
 		background-color: ${({ variant, isDisabled }) =>
 			isDisabled ? variants[variant || 'primary'].surface : variants[variant || 'primary'].hover};
+		border-color: ${({ variant }) =>
+			variant === 'tertiary'
+				? `color-mix(in srgb, var(--button-tertiary-borderColor) 80%, var(--color-transparent) )`
+				: variants[variant || 'primary'].borderColor};
+		color: ${({ variant }) =>
+			variant === 'tertiary'
+				? `color-mix(in srgb, var(--button-tertiary-text) 80%, var(--color-transparent) )`
+				: variants[variant || 'primary'].text};
 	}
 
 	&:disabled {
@@ -68,14 +71,15 @@ export const Button = styled.button<ButtonProps>`
 
 	outline: 0;
 	appearance: none;
+	border-style: solid;
 
-	&:is(:focus-visible, [data-focus-visible]) {
+	/* 	&:is(:focus-visible, :active, [data-focus-visible]) {
 		outline-style: solid;
 		outline-offset: 0px;
 		outline-width: '1px';
 		outline-color: 'transparent';
 		border-color: #8a8a8a;
-	}
+	} */
 `;
 
 /**
@@ -84,8 +88,8 @@ export const Button = styled.button<ButtonProps>`
  * @returns {JSX.Element} Un div que representa un spinner de carga.
  */
 export const Spinner = styled.div`
-	border: 2px solid rgba(255, 255, 255, 0.2);
-	border-top: 2px solid white;
+	border: 2px solid color-mix(in srgb, var(--color-white) 10%, var(--color-transparent));
+	border-top: 2px solid var(--color-white);
 	border-radius: 50%;
 	width: 16px;
 	height: 16px;

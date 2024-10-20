@@ -3,12 +3,12 @@
   --button-primary-text: var(--color-white, #ffffff);
   --button-primary-borderColor: var(--color-transparent, rgba(255, 255, 255, 0.00));
   --button-secondary-surface: var(--surface-secondary, #d69e2e);
-  --button-tertiary-surface: var(--color-gray-500, #718096);
+  --button-tertiary-surface: var(--color-gray-100, #edf2f7);
   --button-secondary-text: var(--color-white, #ffffff);
   --button-secondary-borderColor: var(--color-transparent, rgba(255, 255, 255, 0.00));
-  --button-tertiary-text: var(--color-white, #ffffff);
+  --button-tertiary-text: var(--color-black, #000000);
   --button-neutral-surface: var(--surface-neutral, #edf2f7);
-  --button-tertiary-borderColor: var(--color-transparent, rgba(255, 255, 255, 0.00));
+  --button-tertiary-borderColor: var(--color-gray-500, #718096);
   --button-success-surface: var(--surface-success, #48bb78);
   --button-neutral-text: var(--color-black, #000000);
   --button-warning-surface: var(--surface-warning, #ed8936);

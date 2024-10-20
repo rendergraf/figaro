@@ -60,17 +60,21 @@ const App = () => (
 		>
 			{/* 			<Input placeholder='Password' type='password' showPasswordToggle helperText='Aqui su password' />
 			<Input appearance='outline' placeholder='Name' /> */}
-			<Button variant='tertiary' size='lg'>
-				<Icon name='clock' color='white' />
+			<Button variant='primary' size='md'>
+				<Icon name='clock' color='var(--color-white)' />
 				Reloj
 			</Button>
+			<Button variant='primary' size='md'>
+				Aceptar
+			</Button>
 			<Input
+				size='md'
 				variant='primary'
 				appearance='outline'
 				placeholder='Your password'
 				type='password'
 				showPasswordToggle
-				helperText='Aqui su passwor de session'
+				helperText='Aqui su password de session'
 				prefix='http://'
 				suffix='.com'
 				/* borderRadius='20px' */
@@ -191,7 +195,7 @@ const App = () => (
 				Click
 			</Button>
 			<Button variant='tertiary' size='lg'>
-				<Icon name='heartSolid' color='white' />
+				<Icon name='heartSolid' color='var(--button-tertiary-borderColor)' />
 				Click
 			</Button>
 			<Button variant='error' size='lg'>

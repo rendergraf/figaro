@@ -1,7 +1,15 @@
 import { css } from '@linaria/core';
 import { styled } from '@linaria/react';
 import { InputType } from './types';
-import { height, fontSizes, createVariantInput, createAppearance, createPadding } from '../../styles';
+import {
+	height,
+	fontSizes,
+	createVariantInput,
+	createAppearance,
+	createPadding,
+	FlexMixin,
+	Padding,
+} from '../../styles';
 
 export const variants = {
 	primary: createVariantInput('primary'),
@@ -30,21 +38,26 @@ export const paddingSizes = {
 
 export const Wrapper = styled.div`
 	font-family: Arial, Helvetica, sans-serif;
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
+	${FlexMixin({
+		direction: 'column',
+		align: 'flex-start',
+		justify: 'center',
+		gap: 'var(--unit)',
+	})};
 	width: 100%;
-	gap: var(--unit);
 	box-sizing: border-box;
 `;
 
 export const Input = styled.input<InputType>`
-	outline: 0;
-	appearance: none;
-	flex-grow: 1;
 	border-style: double;
+	appearance: none;
 	text-align: start;
 	min-width: 0px;
+	flex-grow: 1;
+	outline: 0;
+	transition:
+		border-color 0.2s,
+		box-shadow 0.2s;
 	height: ${({ size }) => height[size || 'md']};
 	cursor: ${({ isDisabled }) => (isDisabled ? 'not-allowed' : 'text')};
 	opacity: ${({ isDisabled }) => (isDisabled ? 0.4 : 1)};
@@ -70,27 +83,23 @@ export const Input = styled.input<InputType>`
 	border-left-width: ${({ appearance }: { appearance?: keyof typeof appearances }) =>
 		appearances[appearance || 'outline'].borderTheRest};
 	font-size: ${({ size }) => fontSizes[size || 'md']};
-	/* 	border-color: ${({ error, success, variant }) =>
-		error ? 'red' : success ? 'green' : variants[variant || 'neutral'].surface}; */
-	transition:
-		border-color 0.2s,
-		box-shadow 0.2s;
-	border-radius: ${({ borderRadius, appearance }) => (appearance === 'flushed' ? '0' : borderRadius || '4px')};
+	border-radius: ${({ borderRadius, appearance }) =>
+		appearance === 'flushed' ? '0' : borderRadius || 'var(--half-unit)'};
 	color: ${({ variant }) => variants[variant || 'neutral'].text};
 	background-color: ${({ variant, appearance }) =>
 		appearance === 'filled'
 			? `color-mix(in srgb, ${variants[variant || 'neutral']?.surface || 'var(--color-gray-500)'} 10%, var(--color-transparent))`
 			: 'var(--color-transparent)'};
-	z-index: 1;
+	z-index: var(--z-index-first);
 
 	&:is(:focus-visible, [data-focus-visible]) {
-		outline-style: solid;
-		outline-offset: 0px;
 		outline-width: ${({ appearance }) => (appearance === 'flushed' ? '0px' : '1px')};
 		outline-color: ${({ variant }) => variants[variant || 'neutral'].borderColor};
 		box-shadow: ${({ appearance, variant }) =>
 			appearance === 'flushed' ? `0px 1px 0px 0px ${variants[variant || 'neutral'].borderColor}` : 'none'};
 		border-color: ${({ variant }) => variants[variant || 'neutral'].borderColor};
+		outline-style: solid;
+		outline-offset: 0px;
 	}
 
 	&:focus {
@@ -100,47 +109,59 @@ export const Input = styled.input<InputType>`
 `;
 
 export const Row = styled.div`
-	display: flex;
-	flex-direction: row;
+	${FlexMixin({
+		direction: 'row',
+	})};
 	width: 100%;
 `;
 
 export const WrapperButton = styled.div`
-	display: flex;
+	z-index: var(--z-index-navigation);
 	position: absolute;
-	align-items: center;
 	right: var(--unit);
-	padding-right: var(--unit);
-	padding-left: var(--unit);
-	z-index: 3;
+	${FlexMixin({
+		align: 'center',
+	})};
+	${Padding({
+		right: 'var(--unit)',
+		left: 'var(--unit)',
+	})}
 `;
 
 export const HelperText = styled.span`
-	font-size: 16px;
+	font-size: var(--font-size-sm);
 `;
 
 export const Prefix = styled.span`
-	position: absolute;
-	display: flex;
-	flex-shrink: 0;
-	align-items: center;
-	left: var(--unit);
-	padding-left: var(--unit);
-	padding-right: var(--unit);
 	border-right: 1px solid var(--color-gray-100);
+	position: absolute;
+	flex-shrink: 0;
+	left: var(--unit);
+	${FlexMixin({
+		align: 'center',
+	})};
+	${Padding({
+		right: 'var(--unit)',
+		left: 'var(--unit)',
+	})}
 `;
 
 export const Sufix = styled.span<InputType>`
 	position: absolute;
-	display: flex;
-	flex-shrink: 0;
-	align-items: center;
-	padding-left: var(--unit);
-	padding-right: var(--unit);
 	right: ${({ showPasswordToggle }) => (showPasswordToggle ? '54px' : '16px')};
 	border-left: 1px solid var(--color-gray-100);
+	flex-shrink: 0;
+	${FlexMixin({
+		align: 'center',
+	})};
+	${Padding({
+		right: 'var(--unit)',
+		left: 'var(--unit)',
+	})}
 `;
 
 export const Button = css`
-	padding: var(--half-unit) + var(--quarter-unit);
+	${Padding({
+		all: 'var(--half-unit) + var(--quarter-unit)',
+	})}
 `;
