@@ -44,7 +44,7 @@ export const Button = styled.button<ButtonProps>`
 	}};
 	font-size: ${({ size }) => fontSizes[size || 'md']};
 	border-radius: ${({ borderRadius }) => borderRadius || '4px'};
-	border: ${({ variant }) => (variant === 'tertiary' ? variants.tertiary.borderColor : 'none')};
+	border-color: ${({ variant }) => variants[variant || 'primary'].borderColor};
 	cursor: ${({ isDisabled }) => (isDisabled ? 'not-allowed' : 'pointer')};
 	opacity: ${({ isDisabled }) => (isDisabled ? 0.6 : 1)};
 	display: flex;

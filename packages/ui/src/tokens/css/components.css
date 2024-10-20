@@ -1,11 +1,14 @@
 :root {
   --button-primary-surface: var(--surface-primary, #3182ce);
   --button-primary-text: var(--color-white, #ffffff);
+  --button-primary-borderColor: var(--color-transparent, rgba(255, 255, 255, 0.00));
   --button-secondary-surface: var(--surface-secondary, #d69e2e);
-  --button-secondary-text: var(--color-white, #ffffff);
   --button-tertiary-surface: var(--color-gray-500, #718096);
-  --button-neutral-surface: var(--surface-neutral, #edf2f7);
+  --button-secondary-text: var(--color-white, #ffffff);
+  --button-secondary-borderColor: var(--color-transparent, rgba(255, 255, 255, 0.00));
   --button-tertiary-text: var(--color-white, #ffffff);
+  --button-neutral-surface: var(--surface-neutral, #edf2f7);
+  --button-tertiary-borderColor: var(--color-transparent, rgba(255, 255, 255, 0.00));
   --button-success-surface: var(--surface-success, #48bb78);
   --button-neutral-text: var(--color-black, #000000);
   --button-warning-surface: var(--surface-warning, #ed8936);
@@ -14,7 +17,12 @@
   --button-error-text: var(--color-white, #ffffff);
   --button-info-surface: var(--surface-info, #00b5d8);
   --button-info-text: var(--color-white, #ffffff);
+  --button-neutral-borderColor: var(--color-transparent, rgba(255, 255, 255, 0.00));
   --button-success-text: var(--color-white, #ffffff);
+  --button-success-borderColor: var(--color-transparent, rgba(255, 255, 255, 0.00));
+  --button-warning-borderColor: var(--color-transparent, rgba(255, 255, 255, 0.00));
+  --button-error-borderColor: var(--color-transparent, rgba(255, 255, 255, 0.00));
+  --button-info-borderColor: var(--color-transparent, rgba(255, 255, 255, 0.00));
   --input-primary-surface: var(--surface-primary, #3182ce);
   --input-primary-borderColor: var(--surface-primary, #3182ce);
   --input-primary-text: var(--color-black, #000000);
@@ -34,8 +42,8 @@
   --input-warning-text: var(--color-black, #000000);
   --input-error-surface: var(--surface-error, #e53e3e);
   --input-error-borderColor: var(--surface-error, #e53e3e);
-  --input-error-text: var(--color-black, #000000);
   --input-info-surface: var(--surface-info, #00b5d8);
+  --input-error-text: var(--color-black, #000000);
   --input-info-borderColor: var(--surface-info, #00b5d8);
   --input-info-text: var(--color-black, #000000);
   --input-success-text: var(--color-black, #000000);

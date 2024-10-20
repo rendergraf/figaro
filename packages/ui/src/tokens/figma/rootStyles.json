@@ -3762,6 +3762,110 @@
         }
       },
       "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:41:146": {
+      "id": "VariableID:41:146",
+      "key": "90bb1bbf6abed4fd7cdbade780666dd03d8492c3",
+      "name": "button/primary/borderColor",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:23:221"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:41:147": {
+      "id": "VariableID:41:147",
+      "key": "1c2bc14cbec69068a13181cedcf98bf4bc19cf00",
+      "name": "button/secondary/borderColor",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:23:221"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:41:148": {
+      "id": "VariableID:41:148",
+      "key": "76362e69b2dbf628c5eb8339e251658b2d0ea7dc",
+      "name": "button/tertiary/borderColor",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:23:221"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:41:149": {
+      "id": "VariableID:41:149",
+      "key": "429a27d44dd4e1e298fcf021e44464daaa1ba507",
+      "name": "button/neutral/borderColor",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:23:221"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:41:150": {
+      "id": "VariableID:41:150",
+      "key": "4689dc81170de7529a7c42e28ad852bf812dd7d8",
+      "name": "button/success/borderColor",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:23:221"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:41:151": {
+      "id": "VariableID:41:151",
+      "key": "70e889e7e63883b0e72172cbc2bbccd10a09b251",
+      "name": "button/warning/borderColor",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:23:221"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:41:152": {
+      "id": "VariableID:41:152",
+      "key": "ded4629a049a55c6e04312e8044143cf3928b50f",
+      "name": "button/error/borderColor",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:23:221"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:41:153": {
+      "id": "VariableID:41:153",
+      "key": "b3eb7fb3d91c7a2e9ae38d875c7b7a1d7a47b0e4",
+      "name": "button/info/borderColor",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:23:221"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
     }
   },
   "collections": {
@@ -4073,11 +4177,14 @@
       "variableIds": [
         "VariableID:37:148",
         "VariableID:37:149",
+        "VariableID:41:146",
         "VariableID:34:147",
-        "VariableID:37:153",
         "VariableID:34:148",
-        "VariableID:34:151",
+        "VariableID:37:153",
+        "VariableID:41:147",
         "VariableID:37:154",
+        "VariableID:34:151",
+        "VariableID:41:148",
         "VariableID:34:150",
         "VariableID:37:155",
         "VariableID:37:160",
@@ -4086,7 +4193,12 @@
         "VariableID:37:157",
         "VariableID:34:152",
         "VariableID:37:158",
+        "VariableID:41:149",
         "VariableID:37:156",
+        "VariableID:41:150",
+        "VariableID:41:151",
+        "VariableID:41:152",
+        "VariableID:41:153",
         "VariableID:38:146",
         "VariableID:39:146",
         "VariableID:38:147",
@@ -4106,8 +4218,8 @@
         "VariableID:38:156",
         "VariableID:38:157",
         "VariableID:39:152",
-        "VariableID:38:158",
         "VariableID:39:153",
+        "VariableID:38:158",
         "VariableID:38:159",
         "VariableID:38:160",
         "VariableID:38:161"

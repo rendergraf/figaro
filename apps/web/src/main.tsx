@@ -60,7 +60,7 @@ const App = () => (
 		>
 			{/* 			<Input placeholder='Password' type='password' showPasswordToggle helperText='Aqui su password' />
 			<Input appearance='outline' placeholder='Name' /> */}
-			<Button variant='primary' size='lg'>
+			<Button variant='tertiary' size='lg'>
 				<Icon name='clock' color='white' />
 				Reloj
 			</Button>

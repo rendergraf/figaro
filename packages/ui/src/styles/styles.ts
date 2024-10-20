@@ -24,7 +24,7 @@ export const createVariantInput = (name: VariantName): Variant => ({
 
 // Variant Button
 export const createVariantButton = (name: VariantName): Variant => ({
-	surface: `var(--button-${name}-surface`,
+	surface: `var(--button-${name}-surface)`,
 	text: `var(--button-${name}-text)`,
 	hover: `color-mix(in srgb, var(--button-${name}-surface) 90%, var(--color-transparent))`,
 	borderColor: `var(--button-${name}-borderColor)`,

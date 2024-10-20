@@ -86,8 +86,8 @@ export const Input: React.FC<InputType> = ({
 					</S.Prefix>
 				)}
 				<S.Input
-					size={size}
 					ref={inputRef}
+					size={size}
 					variant={variant}
 					appearance={appearance}
 					type={inputType}
