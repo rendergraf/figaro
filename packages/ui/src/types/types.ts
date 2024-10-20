@@ -38,9 +38,9 @@ export interface Variant {
  * @export PaddingSizes
  * @interface Size
  */
-export interface Size {
+/* export interface Size {
 	size?: keyof typeof paddingSizes;
-}
+} */
 
 /**
  * Defines the border appearance styles for different input variations.

@@ -65,9 +65,8 @@ const App = () => (
 				Reloj
 			</Button>
 			<Input
-				size='md'
 				variant='primary'
-				appearance='filled'
+				appearance='outline'
 				placeholder='Your password'
 				type='password'
 				showPasswordToggle
@@ -79,15 +78,15 @@ const App = () => (
 				onBlur={() => console.log('Blur')}
 			/>
 			<Input
-				size='xs'
+				size='lg'
 				variant='secondary'
 				appearance='filled'
 				placeholder='Your password'
-				type='password'
-				showPasswordToggle
-				helperText='Aqui su passwor de session'
+				type='text'
+				/* showPasswordToggle */
+				/* 		helperText='Aqui su passwor de session'
 				prefix='http://'
-				suffix='.com'
+				suffix='.com' */
 				/* borderRadius='20px' */
 				onFocus={() => console.log('Focus')}
 				onBlur={() => console.log('Blur')}

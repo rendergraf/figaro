@@ -1,3 +1,3 @@
-import { Size, Variant } from './types';
+import { Variant } from './types';
 
-export interface ButtonType extends Variant, Size {}
+export interface ButtonType extends Variant {}

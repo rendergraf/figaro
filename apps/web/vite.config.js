@@ -5,9 +5,13 @@ import svgr from 'vite-plugin-svgr';
 export default defineConfig(() => ({
 	plugins: [
 		wyw({
+			evaluate: true,
+			displayName: true,
+			variableNameSlug: context => `${context.precedingCss.match(/([\w-]+)\s*:\s*$/)[1]}____${context.valueSlug}`,
+			variableNameConfig: 'var',
 			include: ['**/*.{ts,tsx}'],
 			babelOptions: {
-				presets: ['@babel/preset-typescript', '@babel/preset-react'],
+				presets: ['@babel/preset-typescript', '@babel/preset-react', '@wyw-in-js'],
 			},
 		}),
 		svgr({

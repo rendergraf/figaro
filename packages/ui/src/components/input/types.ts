@@ -1,22 +1,14 @@
-import { Appearance, Variant } from '../../types/types';
-import { paddingSizes } from './styled';
+import { appearances, variants } from './styled';
 
-export interface Size {
-	size?: keyof typeof paddingSizes;
+export interface Appearance {
+	appearance?: keyof typeof appearances;
 }
-
-type InputFieldType = 'text' | 'password' | 'email' | 'number' | 'tel' | 'url';
-
-/**
- * @description Properties related to the input component.
- * @author Xavier Araque
- * @date 16/10/2024
- * @export InputProps
- * @interface InputProps
- * @extends {InputType}
- */
-export interface InputType extends Variant, Size, Appearance {
-	type?: InputFieldType;
+export interface Variant {
+	variant?: keyof typeof variants;
+}
+export interface InputType extends Variant, Appearance {
+	size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+	type?: 'text' | 'password' | 'email' | 'number' | 'tel' | 'url';
 	isDisabled?: boolean;
 	borderRadius?: string;
 	placeholder?: string;

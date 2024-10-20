@@ -1,18 +1,17 @@
 import { css } from '@linaria/core';
 import { styled } from '@linaria/react';
 import { InputType } from './types';
-import { createVariant, createAppearance, createPaddingSizes } from '../../styles';
-import { fontSizes, height } from '../../styles';
+import { height, fontSizes, createVariantInput, createAppearance, createPadding } from '../../styles';
 
 export const variants = {
-	primary: createVariant('primary'),
-	secondary: createVariant('secondary'),
-	tertiary: createVariant('tertiary'),
-	neutral: createVariant('neutral'),
-	success: createVariant('success'),
-	warning: createVariant('warning'),
-	error: createVariant('error'),
-	info: createVariant('info'),
+	primary: createVariantInput('primary'),
+	secondary: createVariantInput('secondary'),
+	tertiary: createVariantInput('tertiary'),
+	neutral: createVariantInput('neutral'),
+	success: createVariantInput('success'),
+	warning: createVariantInput('warning'),
+	error: createVariantInput('error'),
+	info: createVariantInput('info'),
 };
 
 export const appearances = {
@@ -22,11 +21,11 @@ export const appearances = {
 };
 
 export const paddingSizes = {
-	xs: createPaddingSizes('2px 4px'),
-	sm: createPaddingSizes('3px 6px'),
-	md: createPaddingSizes('4px 8px'),
-	lg: createPaddingSizes('6px 12px'),
-	xl: createPaddingSizes('8px 16px'),
+	xs: createPadding('2px 4px'),
+	sm: createPadding('3px 6px'),
+	md: createPadding('4px 8px'),
+	lg: createPadding('6px 12px'),
+	xl: createPadding('8px 16px'),
 };
 
 export const Wrapper = styled.div`
@@ -54,8 +53,14 @@ export const Input = styled.input<InputType>`
 		return `${top} ${right} ${bottom} ${left}`;
 	}};
 	padding-inline-end: ${({ showPasswordToggle }) => (showPasswordToggle ? '40px' : '0')};
-	border-color: ${({ appearance, variant }) =>
-		appearance === 'filled' ? 'var(--color-transparent)' : variants[variant || 'neutral'].surface};
+	border-color: ${({ appearance, variant, error, success }) =>
+		appearance === 'filled'
+			? error
+				? 'var(--surface-error)'
+				: success
+					? 'var(--surface-success)'
+					: 'var(--color-transparent)'
+			: variants[variant || 'neutral'].borderColor};
 	border-top-width: ${({ appearance }: { appearance?: keyof typeof appearances }) =>
 		appearances[appearance || 'outline'].borderTheRest};
 	border-right-width: ${({ appearance }: { appearance?: keyof typeof appearances }) =>
@@ -82,15 +87,15 @@ export const Input = styled.input<InputType>`
 		outline-style: solid;
 		outline-offset: 0px;
 		outline-width: ${({ appearance }) => (appearance === 'flushed' ? '0px' : '1px')};
-		outline-color: ${({ variant }) => variants[variant || 'neutral'].surface};
+		outline-color: ${({ variant }) => variants[variant || 'neutral'].borderColor};
 		box-shadow: ${({ appearance, variant }) =>
-			appearance === 'flushed' ? `0px 1px 0px 0px ${variants[variant || 'neutral'].surface}` : 'none'};
-		border-color: ${({ variant }) => variants[variant || 'neutral'].surface};
+			appearance === 'flushed' ? `0px 1px 0px 0px ${variants[variant || 'neutral'].borderColor}` : 'none'};
+		border-color: ${({ variant }) => variants[variant || 'neutral'].borderColor};
 	}
 
 	&:focus {
 		box-shadow: ${({ appearance, variant }) =>
-			appearance === 'flushed' ? `0px 1px 0px 0px ${variants[variant || 'neutral'].surface}` : 'none'};
+			appearance === 'flushed' ? `0px 1px 0px 0px ${variants[variant || 'neutral'].borderColor}` : 'none'};
 	}
 `;
 

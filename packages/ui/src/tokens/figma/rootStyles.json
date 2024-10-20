@@ -3238,7 +3238,7 @@
       "valuesByMode": {
         "24:0": {
           "type": "VARIABLE_ALIAS",
-          "id": "VariableID:23:76"
+          "id": "VariableID:9:187"
         }
       },
       "variableCollectionId": "VariableCollectionId:24:251"
@@ -3272,7 +3272,7 @@
     "VariableID:34:151": {
       "id": "VariableID:34:151",
       "key": "2b85583ac0fcdd78db4318f99eb991f20e313cf3",
-      "name": "button/neutral/furface",
+      "name": "button/neutral/surface",
       "resolvedType": "COLOR",
       "valuesByMode": {
         "24:0": {
@@ -3355,7 +3355,7 @@
       "valuesByMode": {
         "24:0": {
           "type": "VARIABLE_ALIAS",
-          "id": "VariableID:9:150"
+          "id": "VariableID:9:151"
         }
       },
       "variableCollectionId": "VariableCollectionId:24:251"
@@ -3368,7 +3368,7 @@
       "valuesByMode": {
         "24:0": {
           "type": "VARIABLE_ALIAS",
-          "id": "VariableID:9:151"
+          "id": "VariableID:9:150"
         }
       },
       "variableCollectionId": "VariableCollectionId:24:251"
@@ -3424,6 +3424,344 @@
         }
       },
       "variableCollectionId": "VariableCollectionId:15:249"
+    },
+    "VariableID:37:160": {
+      "id": "VariableID:37:160",
+      "key": "77f30d3252de5016abf42b794c6d99af2157e481",
+      "name": "button/warning/surface",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:15:255"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:37:161": {
+      "id": "VariableID:37:161",
+      "key": "0ab276f1992b0023fe960e4d9228e70fce7a26a2",
+      "name": "button/warning/text",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:9:151"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:38:146": {
+      "id": "VariableID:38:146",
+      "key": "d737d12553465ce84c15f1c45bfa6864595b4c40",
+      "name": "input/primary/surface",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:15:253"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:38:147": {
+      "id": "VariableID:38:147",
+      "key": "3dd124bd604b4e99209e426ee6aef2dda4889e0e",
+      "name": "input/primary/text",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:9:150"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:38:148": {
+      "id": "VariableID:38:148",
+      "key": "3e9d12023aafb369ddbda435e58b03b60ea6e2e0",
+      "name": "input/secondary/surface",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:15:254"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:38:149": {
+      "id": "VariableID:38:149",
+      "key": "a23e8551e42cc821d31efa99c83741656d9aa825",
+      "name": "input/tertiary/surface",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:9:187"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:38:150": {
+      "id": "VariableID:38:150",
+      "key": "f65871ff850426a9281aa60d7e5aae8e5224e680",
+      "name": "input/secondary/text",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:9:150"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:38:151": {
+      "id": "VariableID:38:151",
+      "key": "4f5b0d78a1193f883b2d5ec46bb4831d9489d6b7",
+      "name": "input/neutral/surface",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:34:153"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:38:152": {
+      "id": "VariableID:38:152",
+      "key": "76c5406d2a0daf7e9260ce3052fb72da2fb170bc",
+      "name": "input/tertiary/text",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:9:150"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:38:153": {
+      "id": "VariableID:38:153",
+      "key": "a347ac31593df5b1402e3a181b51be038a60d210",
+      "name": "input/success/surface",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:15:251"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:38:154": {
+      "id": "VariableID:38:154",
+      "key": "ec5c66608b2187cf6fea92d628f553bfeecb4a4e",
+      "name": "input/neutral/text",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:9:150"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:38:155": {
+      "id": "VariableID:38:155",
+      "key": "442c66409b46abace0b038faff4f4a6d5cd425dc",
+      "name": "input/warning/surface",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:15:255"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:38:156": {
+      "id": "VariableID:38:156",
+      "key": "8dc7a04769077f836f0dcb8ce5a389225efce88e",
+      "name": "input/warning/text",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:9:150"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:38:157": {
+      "id": "VariableID:38:157",
+      "key": "a1f46589c4a2fad6b7ad8d1c06a8e21e283032c5",
+      "name": "input/error/surface",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:15:257"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:38:158": {
+      "id": "VariableID:38:158",
+      "key": "58d8d156f1ea8babe2c53e4a1ed1089f0c6afee9",
+      "name": "input/error/text",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:9:150"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:38:159": {
+      "id": "VariableID:38:159",
+      "key": "cce771beb7ae0e9a642e594dbe5164ca3969cf8a",
+      "name": "input/info/borderColor",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:15:256"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:38:160": {
+      "id": "VariableID:38:160",
+      "key": "64fc2adbaf8304f7673ccefc4b81b9bec7b39ced",
+      "name": "input/info/text",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:9:150"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:38:161": {
+      "id": "VariableID:38:161",
+      "key": "d0be7e9467ccf0ff03ed87c4993b07e9a6bd2115",
+      "name": "input/success/text",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:9:150"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:39:146": {
+      "id": "VariableID:39:146",
+      "key": "0bc6f5713efceee329cf0579046718bbea2c3323",
+      "name": "input/primary/borderColor",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:15:253"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:39:147": {
+      "id": "VariableID:39:147",
+      "key": "adf70e2ebc1bb26833dabd2ac22f74be153d7442",
+      "name": "input/secondary/borderColor",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:15:254"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:39:148": {
+      "id": "VariableID:39:148",
+      "key": "de7b099fca219744e7e5106954096e137a96a4f3",
+      "name": "input/tertiary/borderColor",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:9:187"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:39:149": {
+      "id": "VariableID:39:149",
+      "key": "6a9fbbc9e4805437014b6b82d15870a592af0cad",
+      "name": "input/neutral/borderColor",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:34:153"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:39:150": {
+      "id": "VariableID:39:150",
+      "key": "6925b4780a55ca9a25fe2c3f85742235fb2f1fee",
+      "name": "input/success/borderColor",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:15:251"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:39:151": {
+      "id": "VariableID:39:151",
+      "key": "d02acf4ef304dcb3e583d336d5daa5929987eb19",
+      "name": "input/warning/borderColor",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:15:255"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:39:152": {
+      "id": "VariableID:39:152",
+      "key": "848c38c55976083ae6a1c861a984e45fdda0d81d",
+      "name": "input/error/borderColor",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:15:257"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
+    },
+    "VariableID:39:153": {
+      "id": "VariableID:39:153",
+      "key": "030d5413f2329f11154fd527a5226e31eed3dcf7",
+      "name": "input/info/surface",
+      "resolvedType": "COLOR",
+      "valuesByMode": {
+        "24:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:15:256"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:24:251"
     }
   },
   "collections": {
@@ -3742,11 +4080,37 @@
         "VariableID:37:154",
         "VariableID:34:150",
         "VariableID:37:155",
+        "VariableID:37:160",
+        "VariableID:37:161",
         "VariableID:34:149",
         "VariableID:37:157",
         "VariableID:34:152",
         "VariableID:37:158",
-        "VariableID:37:156"
+        "VariableID:37:156",
+        "VariableID:38:146",
+        "VariableID:39:146",
+        "VariableID:38:147",
+        "VariableID:38:148",
+        "VariableID:39:147",
+        "VariableID:38:149",
+        "VariableID:39:148",
+        "VariableID:38:150",
+        "VariableID:38:151",
+        "VariableID:39:149",
+        "VariableID:38:152",
+        "VariableID:38:153",
+        "VariableID:39:150",
+        "VariableID:38:154",
+        "VariableID:38:155",
+        "VariableID:39:151",
+        "VariableID:38:156",
+        "VariableID:38:157",
+        "VariableID:39:152",
+        "VariableID:38:158",
+        "VariableID:39:153",
+        "VariableID:38:159",
+        "VariableID:38:160",
+        "VariableID:38:161"
       ]
     }
   }

@@ -1,36 +1,36 @@
-/* export const appearances = {
-	outline: {
-		borderBottomWidth: '1px',
-		borderTheRest: '1px',
-	},
-	filled: {
-		borderBottomWidth: '1px',
-		borderTheRest: '1px',
-	},
-	flushed: {
-		borderBottomWidth: '1px',
-		borderTheRest: '0px',
-	},
-}; */
+export type Appearance = {
+	borderBottomWidth: string;
+	borderTheRest: string;
+};
 
-export const createAppearance = (borderBottomWidth: string, borderTheRest: string) => ({
+export const createAppearance = (borderBottomWidth: string, borderTheRest: string): Appearance => ({
 	borderBottomWidth,
 	borderTheRest,
 });
 
-export const appearances = {
-	outline: createAppearance('1px', '1px'),
-	filled: createAppearance('1px', '1px'),
-	flushed: createAppearance('1px', '0px'),
+export type VariantName = 'primary' | 'secondary' | 'tertiary' | 'neutral' | 'success' | 'warning' | 'error' | 'info';
+export type Variant = {
+	surface: string;
+	text: string;
+	hover: string;
+	borderColor: string;
 };
-
-export const createVariant = (name: string) => ({
-	surface: `var(--button-${name}-surface)`,
-	text: `var(--button-${name}-text)`,
-	hover: `color-mix(in srgb, var(--button-${name}-surface) 10%, var(--color-transparent))`,
+export const createVariantInput = (name: VariantName): Variant => ({
+	surface: `var(--input-${name}-surface)`,
+	text: `var(--input-${name}-text)`,
+	hover: `color-mix(in srgb, var(--input-${name}-surface) 10%, var(--color-transparent))`,
+	borderColor: `var(--input-${name}-borderColor)`,
 });
 
-export const variants = {
+// Variant Button
+export const createVariantButton = (name: VariantName): Variant => ({
+	surface: `var(--button-${name}-surface`,
+	text: `var(--button-${name}-text)`,
+	hover: `color-mix(in srgb, var(--button-${name}-surface) 90%, var(--color-transparent))`,
+	borderColor: `var(--button-${name}-borderColor)`,
+});
+
+/* export const variants = {
 	primary: createVariant('primary'),
 	secondary: createVariant('secondary'),
 	tertiary: createVariant('tertiary'),
@@ -39,9 +39,9 @@ export const variants = {
 	warning: createVariant('warning'),
 	error: createVariant('error'),
 	info: createVariant('info'),
-};
+}; */
 
-export const createPaddingSizes = (padding: string) => {
+export const createPadding = (padding: string) => {
 	const values = padding.split(' ');
 
 	switch (values.length) {
@@ -56,14 +56,6 @@ export const createPaddingSizes = (padding: string) => {
 		default:
 			throw new Error('Formato de padding inválido');
 	}
-};
-
-export const paddingSizes = {
-	xs: createPaddingSizes('2px 4px'),
-	sm: createPaddingSizes('3px 6px'),
-	md: createPaddingSizes('4px 8px'),
-	lg: createPaddingSizes('6px 12px'),
-	xl: createPaddingSizes('8px 16px'),
 };
 
 export const fontSizes = {

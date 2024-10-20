@@ -1,9 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
-
 import { Button } from '../button';
 import { Icon } from '../icons';
 import { InputType } from './types';
-
 import * as S from './styled';
 
 /**
@@ -37,15 +35,15 @@ import * as S from './styled';
 export const Input: React.FC<InputType> = ({
 	variant = 'neutral',
 	appearance = 'outline',
-	type = 'text',
-	size = 'md',
+	size,
 	isDisabled = false,
+	showPasswordToggle,
 	borderRadius,
+	type = 'text',
 	placeholder,
 	error,
 	success,
 	helperText,
-	showPasswordToggle,
 	prefix,
 	suffix,
 	onChange,
@@ -88,11 +86,11 @@ export const Input: React.FC<InputType> = ({
 					</S.Prefix>
 				)}
 				<S.Input
+					size={size}
 					ref={inputRef}
 					variant={variant}
 					appearance={appearance}
 					type={inputType}
-					size={size}
 					isDisabled={isDisabled}
 					borderRadius={borderRadius}
 					placeholder={placeholder}
