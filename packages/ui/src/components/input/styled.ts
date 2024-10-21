@@ -134,7 +134,7 @@ export const HelperText = styled.span<InputType>`
 `;
 
 export const Prefix = styled.span<InputType>`
-	border-right: 1px solid var(--color-black-alpha-400);
+	border-right: 1px solid light-dark(var(--color-black-alpha-300), var(--color-white-alpha-300));
 	position: absolute;
 	flex-shrink: 0;
 	left: var(--unit);
@@ -151,7 +151,7 @@ export const Prefix = styled.span<InputType>`
 export const Sufix = styled.span<InputType>`
 	position: absolute;
 	right: ${({ showPasswordToggle }) => (showPasswordToggle ? '54px' : '16px')};
-	border-left: 1px solid var(--color-black-alpha-400);
+	border-left: 1px solid light-dark(var(--color-black-alpha-300), var(--color-white-alpha-300));
 	flex-shrink: 0;
 	color: ${({ variant }) => getColorTheme({ variant, light: '--color-black', dark: '--color-white' })};
 	${FlexMixin({
