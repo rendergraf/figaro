@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const folders = ['src/components', 'src/containers', 'src/tokens', 'src/media', 'src/types'];
+const folders = ['src/components', 'src/containers', 'src/tokens', 'src/media', 'src/types', 'src/common'];
 const baseDir = path.resolve(__dirname, '../');
 const indexFilePath = path.resolve(baseDir, 'index.ts');
 

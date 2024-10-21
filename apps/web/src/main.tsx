@@ -2,11 +2,12 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import './style.css';
-import { rootStyles, Box, Button, Image, Link, Icon, Input } from '@figaro/ui';
+import { Box, Button, Image, Link, Icon, Input, ThemeProvider, ButtonThemeToggle } from '@figaro/ui';
 
 const App = () => (
-	<div className={rootStyles}>
-		<Box
+	<ThemeProvider>
+		<ButtonThemeToggle />
+		{/* 		<Box
 			display='flex'
 			flexDirection='column'
 			bgcolor='red'
@@ -47,7 +48,7 @@ const App = () => (
 				alt='placeholder'
 				title='Foto'
 			/>
-		</Box>
+		</Box> */}
 		<Box
 			component='section'
 			bgcolor='#ffffff'
@@ -203,7 +204,7 @@ const App = () => (
 				Reloj
 			</Button>
 		</Box>
-	</div>
+	</ThemeProvider>
 );
 
 const root = createRoot(document.querySelector<HTMLDivElement>('#app')!);

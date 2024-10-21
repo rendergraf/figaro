@@ -1,7 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 
-// Función para convertir valores RGBA a formato HEX o RGBA según si tiene alpha o no
 function rgbaToCssVariable(rgba) {
 	if (!rgba) return 'transparent';
 
@@ -21,161 +20,175 @@ function rgbaToCssVariable(rgba) {
 	return `#${rHex}${gHex}${bHex}`;
 }
 
-// Función para convertir nombres de variables
 function formatVariableName(name) {
 	return `--${name.replace(/\//g, '-')}`;
 }
 
-// Función para resolver alias
-function resolveAlias(variable, allVariables) {
-	const aliasId = variable.valuesByMode['9:0']?.id;
-	if (aliasId) {
-		const aliasVariable = allVariables.find(v => v.id === aliasId);
-		return aliasVariable ? aliasVariable.resolvedValuesByMode['9:0'].resolvedValue : undefined;
+function resolveVariableAlias(variableId, variables, visited = new Set()) {
+	if (visited.has(variableId)) {
+		throw new Error(`Circular reference detected for variable ${variableId}`);
 	}
-	return undefined;
+	visited.add(variableId);
+
+	const variable = variables[variableId];
+	if (!variable) {
+		throw new Error(`Variable with ID ${variableId} not found`);
+	}
+
+	const valuesByMode = variable.valuesByMode;
+	if (!valuesByMode || Object.keys(valuesByMode).length === 0) {
+		throw new Error(`No values found for variable ${variableId}`);
+	}
+
+	const modeId = Object.keys(valuesByMode)[0];
+	const value = valuesByMode[modeId];
+
+	if (value && value.type === 'VARIABLE_ALIAS') {
+		const resolvedAlias = resolveVariableAlias(value.id, variables, visited);
+		return {
+			aliasId: value.id,
+			value: resolvedAlias.value,
+			resolvedType: resolvedAlias.resolvedType,
+		};
+	}
+
+	return { value, resolvedType: variable.resolvedType };
 }
 
-// Función para generar la variable CSS final
-function generateCssVariable(variable, allVariables) {
-	const { name, type, resolvedValuesByMode } = variable;
-	const resolvedValue = getResolvedValue(variable, allVariables);
-	const aliasName = resolvedValuesByMode['9:0']?.aliasName;
+function generateCssVariable(variable, variables) {
+	const { name, resolvedType } = variable;
+	const cssVarName = formatVariableName(name);
+	let cssVarValue;
 
-	if (type === 'COLOR') {
-		return handleColorType(name, aliasName, resolvedValue);
+	try {
+		const resolvedValue = resolveVariableAlias(variable.id, variables);
+		const value = resolvedValue.value;
+
+		switch (resolvedValue.resolvedType) {
+			case 'COLOR':
+				cssVarValue = rgbaToCssVariable(value);
+				break;
+			case 'FLOAT':
+				cssVarValue = typeof value === 'number' ? value.toString() + 'px' : value;
+				break;
+			case 'STRING':
+				cssVarValue = `"${value}"`;
+				break;
+			default:
+				return null;
+		}
+
+		if (resolvedValue.aliasId) {
+			const aliasName = formatVariableName(variables[resolvedValue.aliasId].name);
+			return `${cssVarName}: var(${aliasName}, ${cssVarValue});`;
+		} else {
+			return `${cssVarName}: ${cssVarValue};`;
+		}
+	} catch (error) {
+		console.warn(`Warning: ${error.message} for variable ${name}`);
+		return null;
 	}
-
-	if (type === 'FLOAT') {
-		return handleFloatType(name, resolvedValue);
-	}
-
-	if (type === 'STRING') {
-		return handleStringType(name, resolvedValue);
-	}
-
-	return [];
 }
 
-function getResolvedValue(variable, allVariables) {
-	const value = variable.resolvedValuesByMode['9:0'] || {};
-	return value.resolvedValue || resolveAlias(variable, allVariables);
-}
+function processCollections(data, outputDir) {
+	const { collections, variables } = data;
+	let allCssVariables = [];
 
-function handleColorType(name, aliasName, resolvedValue) {
-	if (aliasName) {
-		const cssVarName = formatVariableName(aliasName);
-		const fallbackValue = rgbaToCssVariable(resolvedValue);
-		return [
-			`${formatVariableName(aliasName)}: ${fallbackValue};`,
-			`${formatVariableName(name)}: var(${cssVarName}, ${fallbackValue});`,
-		];
-	} else if (resolvedValue) {
-		const cssVarName = formatVariableName(name);
-		return [`${cssVarName}: ${rgbaToCssVariable(resolvedValue)};`];
-	}
-	return [`${formatVariableName(name)}: transparent;`];
-}
-
-function handleFloatType(name, resolvedValue) {
-	if (name.includes('font/weight') || name.includes('zIndex')) {
-		return [`${formatVariableName(name)}: ${resolvedValue !== undefined ? resolvedValue : '0'};`];
-	}
-	return [`${formatVariableName(name)}: ${resolvedValue !== undefined ? resolvedValue + 'px' : '0px'};`];
-}
-
-function handleStringType(name, resolvedValue) {
-	return [`${formatVariableName(name)}: ${resolvedValue !== undefined ? resolvedValue : ''};`];
-}
-
-// Función principal para recorrer el JSON y generar variables CSS
-function generateCssVariables(primitives) {
-	const variables = primitives.variables;
-
-	if (!variables || variables.length === 0) {
-		console.log('No variables found in JSON');
-		return ':root {}';
+	if (!collections || typeof collections !== 'object') {
+		console.warn('No collections found or collections is not an object');
+		return allCssVariables;
 	}
 
-	const cssVariables = new Set();
-	const primitiveVariables = new Set();
+	Object.keys(collections).forEach(collectionId => {
+		const collection = collections[collectionId];
+		if (!collection || !collection.variableIds || !Array.isArray(collection.variableIds)) {
+			console.warn(`Invalid collection: ${collectionId}`);
+			return;
+		}
 
-	variables.forEach(variable => {
-		const generatedVariables = generateCssVariable(variable, variables);
-		generatedVariables.forEach(cssVar => {
-			if (cssVar.includes('var(')) {
-				cssVariables.add(cssVar);
-			} else {
-				primitiveVariables.add(cssVar);
+		const { variableIds, name } = collection;
+		let cssVariables = [];
+
+		variableIds.forEach(variableId => {
+			const variable = variables[variableId];
+			if (variable) {
+				const cssVar = generateCssVariable(variable, variables);
+				if (cssVar) {
+					cssVariables.push(cssVar);
+					allCssVariables.push(cssVar);
+				}
 			}
 		});
+
+		if (cssVariables.length > 0) {
+			const fileName = `${name.toLowerCase().replace(/\s+/g, '-')}.css`;
+			const filePath = path.join(outputDir, fileName);
+			const fileContent = `:root {\n  ${cssVariables.join('\n  ')}\n}`;
+
+			fs.mkdirSync(outputDir, { recursive: true });
+			fs.writeFileSync(filePath, fileContent, 'utf8');
+			console.log(`File generated: ${filePath}`);
+		} else {
+			console.warn(`No CSS variables generated for collection: ${name}`);
+		}
 	});
 
-	const sortedPrimitives = Array.from(primitiveVariables).sort();
-	const sortedVariables = Array.from(cssVariables).sort();
-
-	return `:root {\n\t\t\t${sortedPrimitives.join('\n\t\t\t')}\n\t\t\t${sortedVariables.join('\n\t\t\t')}\n\t\t\t}`;
+	return allCssVariables;
 }
 
-// Función para procesar un archivo individual y generar archivos CSS y TS
-function processFile(jsonFilePath, varsCssPath, outputFilePath) {
-	const jsonData = fs.readFileSync(jsonFilePath, 'utf8');
-	const primitives = JSON.parse(jsonData);
-
-	console.log(primitives);
-
-	// Genera las variables CSS
-	const cssContent = generateCssVariables(primitives);
-
-	// Verifica si el archivo varsCssPath existe, si no, lo crea con contenido predeterminado
-	if (!fs.existsSync(varsCssPath)) {
-		const fileName = path.basename(varsCssPath, '.ts');
-		const initialContent = `import { css } from '@linaria/core';\n\nexport const ${fileName} = css\`\n\t:global() {\n\t\t:root {}\n\t}\n\`;\n\n`;
-		fs.writeFileSync(varsCssPath, initialContent, 'utf8');
-		console.log(`Archivo ${fileName}.ts creado.`);
-	}
-
-	// Modifica el archivo varsCssPath para insertar las variables generadas en :root
-	let varsCssContent = fs.readFileSync(varsCssPath, 'utf8');
-	const rootStart = varsCssContent.indexOf(':root {');
-	const rootEnd = varsCssContent.indexOf('}', rootStart) + 1;
-
-	if (rootStart !== -1 && rootEnd !== -1) {
-		const newVarsCssContent = varsCssContent.slice(0, rootStart) + `${cssContent}` + varsCssContent.slice(rootEnd);
-		fs.writeFileSync(varsCssPath, newVarsCssContent, 'utf8');
-		console.log(`Archivo ${path.basename(varsCssPath)} modificado con las nuevas variables CSS.`);
-	} else {
-		console.log('No se encontró el bloque :root en varsCss.ts');
-	}
-
-	// Guarda las variables CSS en un archivo .css
-	fs.writeFileSync(outputFilePath, cssContent, 'utf8');
-	console.log(`Archivo CSS generado en: ${outputFilePath}`);
-}
-
-// Función para procesar todos los archivos JSON en el directorio
-function processAllFiles() {
-	const jsonDir = path.join(process.cwd(), './src/tokens/figma/');
-	const themeDir = path.join(process.cwd(), './src/tokens/css/');
-	const cssDir = path.join(process.cwd(), './src/tokens/css/autocomplete/');
-
-	// Lee todos los archivos .json en el directorio
-	const jsonFiles = fs.readdirSync(jsonDir).filter(file => file.endsWith('.json'));
-
-	if (jsonFiles.length === 0) {
-		console.log('No se encontraron archivos JSON en el directorio.');
-		return;
-	}
-
-	jsonFiles.forEach(jsonFile => {
-		const jsonFilePath = path.join(jsonDir, jsonFile);
-		const fileName = path.basename(jsonFile, '.json');
-		const varsCssPath = path.join(themeDir, `${fileName}.ts`);
-		const outputFilePath = path.join(cssDir, `css-variable-autocomplete.css`);
-
-		// Procesa cada archivo JSON
-		processFile(jsonFilePath, varsCssPath, outputFilePath);
+function processJsonFiles(jsonDir, outputDir) {
+	let allCssVariables = [];
+	fs.readdirSync(jsonDir).forEach(file => {
+		if (path.extname(file) === '.json') {
+			const jsonPath = path.join(jsonDir, file);
+			try {
+				const jsonData = fs.readFileSync(jsonPath, 'utf8');
+				const data = JSON.parse(jsonData);
+				allCssVariables = allCssVariables.concat(processCollections(data, outputDir));
+			} catch (error) {
+				console.error(`Error processing file ${jsonPath}: ${error.message}`);
+			}
+		}
 	});
+	return allCssVariables;
 }
 
-processAllFiles();
+function removeDuplicateCssVariables(cssVariables) {
+	const uniqueVariables = new Map();
+	cssVariables.forEach(variable => {
+		const [name, value] = variable.split(':');
+		uniqueVariables.set(name.trim(), value.trim());
+	});
+	return Array.from(uniqueVariables).map(([name, value]) => `${name}: ${value}`);
+}
+
+function generateRootStylesTS(cssVariables, outputPath) {
+	const uniqueCssVariables = removeDuplicateCssVariables(cssVariables);
+	const content = `
+import { css } from '@linaria/core';
+
+export const rootStyles = css\`
+  :global() {
+    :root {
+      ${uniqueCssVariables.join('\n      ')}
+    }
+  }
+\`;
+`;
+
+	fs.writeFileSync(outputPath, content, 'utf8');
+	console.log(`rootStyles.ts generated: ${outputPath}`);
+}
+
+// Define input and output directories
+const jsonDir = path.join(process.cwd(), './src/tokens/figma/');
+const cssDir = path.join(process.cwd(), './src/tokens/css/');
+const rootStylesPath = path.join(process.cwd(), './src/tokens/css/rootStyles.ts');
+
+// Process all JSON files in the input directory and generate individual CSS files
+const allCssVariables = processJsonFiles(jsonDir, cssDir);
+
+// Generate rootStyles.ts with all unique CSS variables
+generateRootStylesTS(allCssVariables, rootStylesPath);
+
+console.log('Processing complete.');

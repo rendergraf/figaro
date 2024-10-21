@@ -20,14 +20,17 @@ export const variants = {
 	error: createVariantButton('error'),
 	info: createVariantButton('info'),
 };
-/**
- * Botón estilizado.
- * @function StyledButton
- * @param {ButtonProps} props - Props del botón.
- * @returns {JSX.Element} El botón estilizado.
- */
+
+type VariantKeys = keyof typeof variants;
+
+const getButtonStyles = (variant: VariantKeys = 'primary'): string => {
+	const variantStyles = variants[variant];
+
+	return `${variantStyles.surface}, ${variantStyles.text}`;
+};
+
 export const Button = styled.button<ButtonProps>`
-	background-color: ${({ variant }) => variants[variant || 'primary'].surface};
+	background-color: ${({ variant }) => `light-dark(${getButtonStyles(variant)})`};
 	color: ${({ variant }) => variants[variant || 'primary'].text};
 	padding: ${({ size }) => {
 		const { top, right, bottom, left } = paddingSizes[size || 'xs'];
