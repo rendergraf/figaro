@@ -1,5 +1,5 @@
 import { styled } from '@linaria/react';
-import { createVariantButton, createPadding, FlexMixin, fontSizes } from '../../styles';
+import { variantsButton, createPadding, FlexMixin, fontSizes, getColorTheme } from '../../styles';
 import { ButtonProps } from './types';
 
 const paddingSizes = {
@@ -10,28 +10,9 @@ const paddingSizes = {
 	xl: createPadding('12px 24px'),
 };
 
-export const variants = {
-	primary: createVariantButton('primary'),
-	secondary: createVariantButton('secondary'),
-	tertiary: createVariantButton('tertiary'),
-	neutral: createVariantButton('neutral'),
-	success: createVariantButton('success'),
-	warning: createVariantButton('warning'),
-	error: createVariantButton('error'),
-	info: createVariantButton('info'),
-};
-
-type VariantKeys = keyof typeof variants;
-
-const getButtonStyles = (variant: VariantKeys = 'primary'): string => {
-	const variantStyles = variants[variant];
-
-	return `${variantStyles.surface}, ${variantStyles.text}`;
-};
-
 export const Button = styled.button<ButtonProps>`
-	background-color: ${({ variant }) => `light-dark(${getButtonStyles(variant)})`};
-	color: ${({ variant }) => variants[variant || 'primary'].text};
+	background-color: ${({ variant }) => `light-dark(${getColorTheme(variant, 'surface', 'text')})`};
+	color: ${({ variant }) => `light-dark(${getColorTheme(variant, 'text', 'surface')})`};
 	padding: ${({ size }) => {
 		const { top, right, bottom, left } = paddingSizes[size || 'xs'];
 		return `${top} ${right} ${bottom} ${left}`;
@@ -39,7 +20,7 @@ export const Button = styled.button<ButtonProps>`
 	font-size: ${({ size }) => fontSizes[size || 'md']};
 	text-transform: uppercase;
 	border-radius: ${({ borderRadius }) => borderRadius || 'var(--half-unit)'};
-	border-color: ${({ variant }) => variants[variant || 'primary'].borderColor};
+	border-color: ${({ variant }) => variantsButton[variant || 'primary'].borderColor};
 	cursor: ${({ isDisabled }) => (isDisabled ? 'not-allowed' : 'pointer')};
 	opacity: ${({ isDisabled }) => (isDisabled ? 0.6 : 1)};
 	${FlexMixin({
@@ -55,15 +36,15 @@ export const Button = styled.button<ButtonProps>`
 
 	&:hover {
 		background-color: ${({ variant, isDisabled }) =>
-			isDisabled ? variants[variant || 'primary'].surface : variants[variant || 'primary'].hover};
+			isDisabled ? variantsButton[variant || 'primary'].surface : variantsButton[variant || 'primary'].hover};
 		border-color: ${({ variant }) =>
 			variant === 'tertiary'
 				? `color-mix(in srgb, var(--button-tertiary-borderColor) 80%, var(--color-transparent) )`
-				: variants[variant || 'primary'].borderColor};
+				: variantsButton[variant || 'primary'].borderColor};
 		color: ${({ variant }) =>
 			variant === 'tertiary'
 				? `color-mix(in srgb, var(--button-tertiary-text) 80%, var(--color-transparent) )`
-				: variants[variant || 'primary'].text};
+				: variantsButton[variant || 'primary'].text};
 	}
 
 	&:disabled {

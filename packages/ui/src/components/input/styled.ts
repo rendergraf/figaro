@@ -2,25 +2,15 @@ import { css } from '@linaria/core';
 import { styled } from '@linaria/react';
 import { InputType } from './types';
 import {
+	getColorTheme,
 	height,
 	fontSizes,
-	createVariantInput,
+	variantsInput,
 	createAppearance,
 	createPadding,
 	FlexMixin,
 	Padding,
 } from '../../styles';
-
-export const variants = {
-	primary: createVariantInput('primary'),
-	secondary: createVariantInput('secondary'),
-	tertiary: createVariantInput('tertiary'),
-	neutral: createVariantInput('neutral'),
-	success: createVariantInput('success'),
-	warning: createVariantInput('warning'),
-	error: createVariantInput('error'),
-	info: createVariantInput('info'),
-};
 
 export const appearances = {
 	outline: createAppearance('1px', '1px'),
@@ -73,7 +63,7 @@ export const Input = styled.input<InputType>`
 				: success
 					? 'var(--surface-success)'
 					: 'var(--color-transparent)'
-			: variants[variant || 'neutral'].borderColor};
+			: variantsInput[variant || 'neutral'].borderColor};
 	border-top-width: ${({ appearance }: { appearance?: keyof typeof appearances }) =>
 		appearances[appearance || 'outline'].borderTheRest};
 	border-right-width: ${({ appearance }: { appearance?: keyof typeof appearances }) =>
@@ -85,26 +75,27 @@ export const Input = styled.input<InputType>`
 	font-size: ${({ size }) => fontSizes[size || 'md']};
 	border-radius: ${({ borderRadius, appearance }) =>
 		appearance === 'flushed' ? '0' : borderRadius || 'var(--half-unit)'};
-	color: ${({ variant }) => variants[variant || 'neutral'].text};
+	/* color: ${({ variant }) => variantsInput[variant || 'neutral'].text}; */
+	color: ${({ variant }) => `light-dark(${getColorTheme(variant)})`};
 	background-color: ${({ variant, appearance }) =>
 		appearance === 'filled'
-			? `color-mix(in srgb, ${variants[variant || 'neutral']?.surface || 'var(--color-gray-500)'} 10%, var(--color-transparent))`
+			? `color-mix(in srgb, light-dark(${getColorTheme(variant, 'surface', 'text')}) 10%, var(--color-transparent))`
 			: 'var(--color-transparent)'};
 	z-index: var(--z-index-first);
 
 	&:is(:focus-visible, [data-focus-visible]) {
 		outline-width: ${({ appearance }) => (appearance === 'flushed' ? '0px' : '1px')};
-		outline-color: ${({ variant }) => variants[variant || 'neutral'].borderColor};
+		outline-color: ${({ variant }) => variantsInput[variant || 'neutral'].borderColor};
 		box-shadow: ${({ appearance, variant }) =>
-			appearance === 'flushed' ? `0px 1px 0px 0px ${variants[variant || 'neutral'].borderColor}` : 'none'};
-		border-color: ${({ variant }) => variants[variant || 'neutral'].borderColor};
+			appearance === 'flushed' ? `0px 1px 0px 0px ${variantsInput[variant || 'neutral'].borderColor}` : 'none'};
+		border-color: ${({ variant }) => variantsInput[variant || 'neutral'].borderColor};
 		outline-style: solid;
 		outline-offset: 0px;
 	}
 
 	&:focus {
 		box-shadow: ${({ appearance, variant }) =>
-			appearance === 'flushed' ? `0px 1px 0px 0px ${variants[variant || 'neutral'].borderColor}` : 'none'};
+			appearance === 'flushed' ? `0px 1px 0px 0px ${variantsInput[variant || 'neutral'].borderColor}` : 'none'};
 	}
 `;
 
@@ -132,11 +123,12 @@ export const HelperText = styled.span`
 	font-size: var(--font-size-sm);
 `;
 
-export const Prefix = styled.span`
+export const Prefix = styled.span<InputType>`
 	border-right: 1px solid var(--color-gray-100);
 	position: absolute;
 	flex-shrink: 0;
 	left: var(--unit);
+	color: ${({ variant }) => `light-dark(${getColorTheme(variant)})`};
 	${FlexMixin({
 		align: 'center',
 	})};
@@ -151,6 +143,7 @@ export const Sufix = styled.span<InputType>`
 	right: ${({ showPasswordToggle }) => (showPasswordToggle ? '54px' : '16px')};
 	border-left: 1px solid var(--color-gray-100);
 	flex-shrink: 0;
+	color: ${({ variant }) => `light-dark(${getColorTheme(variant)})`};
 	${FlexMixin({
 		align: 'center',
 	})};

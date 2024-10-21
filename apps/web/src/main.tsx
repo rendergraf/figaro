@@ -51,7 +51,6 @@ const App = () => (
 		</Box> */}
 		<Box
 			component='section'
-			bgcolor='#ffffff'
 			display='flex'
 			flexDirection='column'
 			justifyContent='center'
@@ -61,7 +60,7 @@ const App = () => (
 		>
 			{/* 			<Input placeholder='Password' type='password' showPasswordToggle helperText='Aqui su password' />
 			<Input appearance='outline' placeholder='Name' /> */}
-			<Button variant='primary' size='md'>
+			<Button variant='secondary' size='md'>
 				<Icon name='clock' color='var(--color-white)' />
 				Reloj
 			</Button>

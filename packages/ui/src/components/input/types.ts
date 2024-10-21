@@ -1,10 +1,11 @@
-import { appearances, variants } from './styled';
+import { appearances } from './styled';
+import { variantsInput } from '../../styles';
 
 export interface Appearance {
 	appearance?: keyof typeof appearances;
 }
 export interface Variant {
-	variant?: keyof typeof variants;
+	variant?: keyof typeof variantsInput;
 }
 export interface InputType extends Variant, Appearance {
 	size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';

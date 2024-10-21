@@ -17,6 +17,7 @@ export type Variant = {
 	hover: string;
 	borderColor: string;
 };
+
 export const createVariantInput = (name: VariantName): Variant => ({
 	surface: `var(--input-${name}-surface)`,
 	text: `var(--input-${name}-text)`,
@@ -32,16 +33,40 @@ export const createVariantButton = (name: VariantName): Variant => ({
 	borderColor: `var(--button-${name}-borderColor)`,
 });
 
-/* export const variants = {
-	primary: createVariant('primary'),
-	secondary: createVariant('secondary'),
-	tertiary: createVariant('tertiary'),
-	neutral: createVariant('neutral'),
-	success: createVariant('success'),
-	warning: createVariant('warning'),
-	error: createVariant('error'),
-	info: createVariant('info'),
-}; */
+export const variantsButton = {
+	primary: createVariantButton('primary'),
+	secondary: createVariantButton('secondary'),
+	tertiary: createVariantButton('tertiary'),
+	neutral: createVariantButton('neutral'),
+	success: createVariantButton('success'),
+	warning: createVariantButton('warning'),
+	error: createVariantButton('error'),
+	info: createVariantButton('info'),
+};
+
+export const variantsInput = {
+	primary: createVariantInput('primary'),
+	secondary: createVariantInput('secondary'),
+	tertiary: createVariantInput('tertiary'),
+	neutral: createVariantInput('neutral'),
+	success: createVariantInput('success'),
+	warning: createVariantInput('warning'),
+	error: createVariantInput('error'),
+	info: createVariantInput('info'),
+};
+
+type VariantKeys = keyof typeof variantsButton;
+
+type VariantStyleKeys = keyof typeof variantsButton.primary;
+
+export const getColorTheme = (
+	variant: VariantKeys = 'primary',
+	light?: VariantStyleKeys,
+	dark?: VariantStyleKeys
+): string => {
+	const variantStyles = variantsButton[variant];
+	return `${light ? variantStyles[light] : 'var(--color-black)'}, ${dark ? variantStyles[dark] : 'var(--color-white)'}`;
+};
 
 export const createPadding = (padding: string) => {
 	const values = padding.split(' ');

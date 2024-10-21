@@ -1,9 +1,9 @@
 //import { ButtonType } from '../../types';
 
-import { variants } from './styled';
+import { variantsButton } from '../../styles';
 
 export interface Variant {
-	variant?: keyof typeof variants;
+	variant?: keyof typeof variantsButton;
 }
 export interface ButtonProps extends Variant {
 	size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
