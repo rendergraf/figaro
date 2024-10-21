@@ -114,8 +114,8 @@ export const Input: React.FC<InputType> = ({
 				)}
 				{showPasswordToggle && (
 					<S.WrapperButton style={{ height: `${heightInput}px` }}>
-						<Button onClick={handlePasswordToggle} variant='neutral' size='xs' className={S.Button}>
-							{<Icon name={inputType === 'password' ? 'eye' : 'eyeSlash'} color='white' size={16} />}
+						<Button onClick={handlePasswordToggle} variant='neutral' size='xs'>
+							{<Icon name={inputType === 'password' ? 'eye' : 'eyeSlash'} size={16} />}
 						</Button>
 					</S.WrapperButton>
 				)}

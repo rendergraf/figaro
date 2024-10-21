@@ -38,56 +38,48 @@ import { ReactComponent as Tag } from '../../icons/processed/tag.svg';
 import { ReactComponent as Trash } from '../../icons/processed/trash.svg';
 
 const iconMap = {
-	add: Add,
-	arrowDown: ArrowDown,
-	arrowLeft: ArrowLeft,
-	arrowRight: ArrowRight,
-	arrowUp: ArrowUp,
-	bell: Bell,
-	calendar: Calendar,
-	check: Check,
-	chevronDown: ChevronDown,
-	chevronLeft: ChevronLeft,
-	chevronRight: ChevronRight,
-	chevronUp: ChevronUp,
-	clock: Clock,
-	close: Close,
-	ellipsis: Ellipsis,
-	ellipsisVertical: EllipsisVertical,
-	eye: Eye,
-	eyeSlash: EyeSlash,
-	heart: Heart,
-	heartSolid: HeartSolid,
-	home: Home,
-	location: Location,
-	lock: Lock,
-	lockOpen: LockOpen,
-	mail: Mail,
-	mailOpen: MailOpen,
-	menu: Menu,
-	people: People,
-	person: Person,
-	refresh: Refresh,
-	search: Search,
-	shoppingBag: ShoppingBag,
-	shoppingCart: ShoppingCart,
-	star: Star,
-	starSolid: StarSolid,
-	tag: Tag,
-	trash: Trash,
+  add: Add,
+  arrowDown: ArrowDown,
+  arrowLeft: ArrowLeft,
+  arrowRight: ArrowRight,
+  arrowUp: ArrowUp,
+  bell: Bell,
+  calendar: Calendar,
+  check: Check,
+  chevronDown: ChevronDown,
+  chevronLeft: ChevronLeft,
+  chevronRight: ChevronRight,
+  chevronUp: ChevronUp,
+  clock: Clock,
+  close: Close,
+  ellipsis: Ellipsis,
+  ellipsisVertical: EllipsisVertical,
+  eye: Eye,
+  eyeSlash: EyeSlash,
+  heart: Heart,
+  heartSolid: HeartSolid,
+  home: Home,
+  location: Location,
+  lock: Lock,
+  lockOpen: LockOpen,
+  mail: Mail,
+  mailOpen: MailOpen,
+  menu: Menu,
+  people: People,
+  person: Person,
+  refresh: Refresh,
+  search: Search,
+  shoppingBag: ShoppingBag,
+  shoppingCart: ShoppingCart,
+  star: Star,
+  starSolid: StarSolid,
+  tag: Tag,
+  trash: Trash
 };
 
-export const Icon = ({
-	name,
-	size = 24,
-	color = 'black',
-}: {
-	name: keyof typeof iconMap;
-	size?: number;
-	color?: string;
-}) => {
-	const SvgIcon = iconMap[name];
-	return SvgIcon ? <SvgIcon width={size} height={size} fill={color} /> : null;
+export const Icon = ({ name, size = 24, color = 'currentColor' }: { name: keyof typeof iconMap; size?: number; color?: string }) => {
+  const SvgIcon = iconMap[name];
+  return SvgIcon ? <SvgIcon width={size} height={size} fill={color} /> : null;
 };
 
 Icon.displayName = 'Icon';

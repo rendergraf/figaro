@@ -11,8 +11,9 @@ const paddingSizes = {
 };
 
 export const Button = styled.button<ButtonProps>`
-	background-color: ${({ variant }) => `light-dark(${getColorTheme(variant, 'surface', 'text')})`};
-	color: ${({ variant }) => `light-dark(${getColorTheme(variant, 'text', 'surface')})`};
+	background-color: ${({ variant }) => getColorTheme({ variant })};
+	color: ${({ variant }) => getColorTheme({ variant, inv: true })};
+
 	padding: ${({ size }) => {
 		const { top, right, bottom, left } = paddingSizes[size || 'xs'];
 		return `${top} ${right} ${bottom} ${left}`;

@@ -39,6 +39,12 @@ export const Wrapper = styled.div`
 `;
 
 export const Input = styled.input<InputType>`
+	background-color: ${({ variant, appearance }) =>
+		appearance === 'filled'
+			? `color-mix(in srgb, ${getColorTheme({ variant })} 10%, var(--color-transparent))`
+			: 'var(--color-transparent)'};
+	color: ${({ variant }) => getColorTheme({ variant, light: '--color-black', dark: '--color-white' })};
+
 	border-style: double;
 	appearance: none;
 	text-align: start;
@@ -76,11 +82,7 @@ export const Input = styled.input<InputType>`
 	border-radius: ${({ borderRadius, appearance }) =>
 		appearance === 'flushed' ? '0' : borderRadius || 'var(--half-unit)'};
 	/* color: ${({ variant }) => variantsInput[variant || 'neutral'].text}; */
-	color: ${({ variant }) => `light-dark(${getColorTheme(variant)})`};
-	background-color: ${({ variant, appearance }) =>
-		appearance === 'filled'
-			? `color-mix(in srgb, light-dark(${getColorTheme(variant, 'surface', 'text')}) 10%, var(--color-transparent))`
-			: 'var(--color-transparent)'};
+
 	z-index: var(--z-index-first);
 
 	&:is(:focus-visible, [data-focus-visible]) {
@@ -106,7 +108,8 @@ export const Row = styled.div`
 	width: 100%;
 `;
 
-export const WrapperButton = styled.div`
+export const WrapperButton = styled.div<InputType>`
+	color: ${({ variant }) => getColorTheme({ variant, light: '--color-black', dark: '--color-white' })};
 	z-index: var(--z-index-navigation);
 	position: absolute;
 	right: var(--unit);
@@ -117,18 +120,25 @@ export const WrapperButton = styled.div`
 		right: 'var(--unit)',
 		left: 'var(--unit)',
 	})}
+	button {
+		color: currentColor;
+		${Padding({
+			all: 'var(--half-unit) + var(--quarter-unit)',
+		})}
+	}
 `;
 
-export const HelperText = styled.span`
+export const HelperText = styled.span<InputType>`
+	color: ${({ variant }) => getColorTheme({ variant, light: '--color-black', dark: '--color-white' })};
 	font-size: var(--font-size-sm);
 `;
 
 export const Prefix = styled.span<InputType>`
-	border-right: 1px solid var(--color-gray-100);
+	border-right: 1px solid var(--color-black-alpha-400);
 	position: absolute;
 	flex-shrink: 0;
 	left: var(--unit);
-	color: ${({ variant }) => `light-dark(${getColorTheme(variant)})`};
+	color: ${({ variant }) => getColorTheme({ variant, light: '--color-gray-800', dark: '--color-gray-100' })};
 	${FlexMixin({
 		align: 'center',
 	})};
@@ -141,20 +151,14 @@ export const Prefix = styled.span<InputType>`
 export const Sufix = styled.span<InputType>`
 	position: absolute;
 	right: ${({ showPasswordToggle }) => (showPasswordToggle ? '54px' : '16px')};
-	border-left: 1px solid var(--color-gray-100);
+	border-left: 1px solid var(--color-black-alpha-400);
 	flex-shrink: 0;
-	color: ${({ variant }) => `light-dark(${getColorTheme(variant)})`};
+	color: ${({ variant }) => getColorTheme({ variant, light: '--color-black', dark: '--color-white' })};
 	${FlexMixin({
 		align: 'center',
 	})};
 	${Padding({
 		right: 'var(--unit)',
 		left: 'var(--unit)',
-	})}
-`;
-
-export const Button = css`
-	${Padding({
-		all: 'var(--half-unit) + var(--quarter-unit)',
 	})}
 `;

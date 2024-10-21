@@ -33,39 +33,52 @@ export const createVariantButton = (name: VariantName): Variant => ({
 	borderColor: `var(--button-${name}-borderColor)`,
 });
 
-export const variantsButton = {
-	primary: createVariantButton('primary'),
-	secondary: createVariantButton('secondary'),
-	tertiary: createVariantButton('tertiary'),
-	neutral: createVariantButton('neutral'),
-	success: createVariantButton('success'),
-	warning: createVariantButton('warning'),
-	error: createVariantButton('error'),
-	info: createVariantButton('info'),
-};
+export const variantNames: VariantName[] = [
+	'primary',
+	'secondary',
+	'tertiary',
+	'neutral',
+	'success',
+	'warning',
+	'error',
+	'info',
+];
 
-export const variantsInput = {
-	primary: createVariantInput('primary'),
-	secondary: createVariantInput('secondary'),
-	tertiary: createVariantInput('tertiary'),
-	neutral: createVariantInput('neutral'),
-	success: createVariantInput('success'),
-	warning: createVariantInput('warning'),
-	error: createVariantInput('error'),
-	info: createVariantInput('info'),
-};
+export const variantsButton = variantNames.reduce(
+	(acc, name) => {
+		acc[name] = createVariantButton(name);
+		return acc;
+	},
+	{} as Record<(typeof variantNames)[number], Variant>
+);
 
-type VariantKeys = keyof typeof variantsButton;
+export const variantsInput = variantNames.reduce(
+	(acc, name) => {
+		acc[name] = createVariantInput(name);
+		return acc;
+	},
+	{} as Record<(typeof variantNames)[number], Variant>
+);
 
-type VariantStyleKeys = keyof typeof variantsButton.primary;
+type VariantKeys = keyof typeof variantsButton & keyof typeof variantsInput;
 
-export const getColorTheme = (
-	variant: VariantKeys = 'primary',
-	light?: VariantStyleKeys,
-	dark?: VariantStyleKeys
-): string => {
+export const getColorTheme = ({
+	inv = false,
+	variant = 'primary',
+	light,
+	dark,
+}: {
+	variant?: VariantKeys;
+	light?: string;
+	dark?: string;
+	inv?: boolean;
+} = {}): string => {
 	const variantStyles = variantsButton[variant];
-	return `${light ? variantStyles[light] : 'var(--color-black)'}, ${dark ? variantStyles[dark] : 'var(--color-white)'}`;
+
+	const lightColor = light ? `var(${light})` : variantStyles.surface;
+	const darkColor = dark ? `var(${dark})` : variantStyles.text;
+
+	return inv ? `light-dark(${darkColor} , ${lightColor})` : `light-dark(${lightColor} , ${darkColor})`;
 };
 
 export const createPadding = (padding: string) => {

@@ -1,18 +1,27 @@
 export default {
-    plugins: [
-        {
-            name: 'preset-default',
-            params: {
-                overrides: {
-                    // disable a default plugin
-                    cleanupIds: false,
+	plugins: [
+		{
+			name: 'preset-default',
+			params: {
+				overrides: {
+					// Deshabilitar un plugin predeterminado
+					cleanupIds: false,
 
-                    // customize the params of a default plugin
-                    inlineStyles: {
-                        onlyMatchedOnce: false,
-                    },
-                },
-            },
-        },
-    ],
+					// Personalizar los estilos en línea
+					inlineStyles: {
+						onlyMatchedOnce: false,
+					},
+				},
+			},
+		},
+		{
+			// Reemplazar todos los atributos fill con currentColor
+			name: 'replaceAttrs',
+			params: {
+				attrs: {
+					fill: 'currentColor',
+				},
+			},
+		},
+	],
 };
