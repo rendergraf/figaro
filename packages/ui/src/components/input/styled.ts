@@ -121,10 +121,10 @@ export const WrapperButton = styled.div<InputType>`
 		left: 'var(--unit)',
 	})}
 	button {
-		color: currentColor;
 		${Padding({
 			all: 'var(--half-unit) + var(--quarter-unit)',
 		})}
+		width: 32px;
 	}
 `;
 

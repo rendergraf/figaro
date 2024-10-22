@@ -2348,7 +2348,7 @@
     "VariableID:22:97": {
       "id": "VariableID:22:97",
       "key": "7790e80f82cfe869f74c3b918606a5b26ee43e27",
-      "name": "font/weight/ligth",
+      "name": "font/weight/light",
       "resolvedType": "STRING",
       "valuesByMode": {
         "22:0": "300"
@@ -2860,52 +2860,20 @@
     "VariableID:26:236": {
       "id": "VariableID:26:236",
       "key": "23e470b3260761211235587e6a5f471e59dff328",
-      "name": "font/letter-spacing/xs",
+      "name": "font/letter-spacing/tight",
       "resolvedType": "FLOAT",
       "valuesByMode": {
-        "9:0": {
-          "type": "VARIABLE_ALIAS",
-          "id": "VariableID:13:232"
-        }
+        "9:0": -0.800000011920929
       },
       "variableCollectionId": "VariableCollectionId:9:114"
     },
     "VariableID:26:237": {
       "id": "VariableID:26:237",
       "key": "8854f9904398a01ee5f6e3589912a2d73c22dc02",
-      "name": "font/letter-spacing/sm",
+      "name": "font/letter-spacing/wide",
       "resolvedType": "FLOAT",
       "valuesByMode": {
-        "9:0": {
-          "type": "VARIABLE_ALIAS",
-          "id": "VariableID:13:231"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:9:114"
-    },
-    "VariableID:26:238": {
-      "id": "VariableID:26:238",
-      "key": "7f3073caf350877aca3f210f143827be431979a3",
-      "name": "font/letter-spacing/md",
-      "resolvedType": "FLOAT",
-      "valuesByMode": {
-        "9:0": {
-          "type": "VARIABLE_ALIAS",
-          "id": "VariableID:13:230"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:9:114"
-    },
-    "VariableID:26:239": {
-      "id": "VariableID:26:239",
-      "key": "820f7b10ddc413b90821f8c8204f71d74e63ca86",
-      "name": "font/letter-spacing/lg",
-      "resolvedType": "FLOAT",
-      "valuesByMode": {
-        "9:0": {
-          "type": "VARIABLE_ALIAS",
-          "id": "VariableID:13:233"
-        }
+        "9:0": 0.800000011920929
       },
       "variableCollectionId": "VariableCollectionId:9:114"
     },
@@ -4005,22 +3973,20 @@
         "VariableID:15:83",
         "VariableID:28:234",
         "VariableID:26:231",
-        "VariableID:26:245",
-        "VariableID:15:84",
         "VariableID:26:413",
-        "VariableID:26:228",
+        "VariableID:26:245",
         "VariableID:26:249",
-        "VariableID:26:224",
         "VariableID:26:232",
+        "VariableID:15:84",
         "VariableID:26:236",
+        "VariableID:26:224",
+        "VariableID:26:228",
         "VariableID:26:250",
         "VariableID:26:251",
         "VariableID:26:246",
         "VariableID:26:247",
         "VariableID:26:248",
         "VariableID:26:237",
-        "VariableID:26:238",
-        "VariableID:26:239",
         "VariableID:26:234",
         "VariableID:26:229",
         "VariableID:26:230",
@@ -4028,8 +3994,8 @@
         "VariableID:26:226",
         "VariableID:26:227",
         "VariableID:15:85",
-        "VariableID:26:352",
         "VariableID:26:414",
+        "VariableID:26:352",
         "VariableID:28:220",
         "VariableID:28:223",
         "VariableID:28:224",

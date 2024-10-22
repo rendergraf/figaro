@@ -1,15 +1,15 @@
 :root {
-  --font-family-title: "Roboto";
-  --font-family-body: "Roboto";
-  --font-weight-thin: "100";
-  --font-weight-extra-ligth: "200";
-  --font-weight-ligth: "300";
-  --font-weight-regular: "400";
-  --font-weight-medium: "500";
-  --font-weight-semi-bold: "600";
-  --font-weight-bold: "700";
-  --font-weight-extra-bold: "800";
-  --font-weight-black: "900";
+  --font-family-title: Roboto;
+  --font-family-body: Roboto;
+  --font-weight-thin: 100;
+  --font-weight-extra-ligth: 200;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semi-bold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extra-bold: 800;
+  --font-weight-black: 900;
   --font-size-xs: var(--unit-half, 12px);
   --font-size-sm: var(--unit-half-quarter, 14px);
   --font-size-md: var(--unit2, 16px);

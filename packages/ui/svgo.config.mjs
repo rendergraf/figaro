@@ -4,10 +4,8 @@ export default {
 			name: 'preset-default',
 			params: {
 				overrides: {
-					// Deshabilitar un plugin predeterminado
+					removeViewBox: false,
 					cleanupIds: false,
-
-					// Personalizar los estilos en línea
 					inlineStyles: {
 						onlyMatchedOnce: false,
 					},
@@ -15,12 +13,15 @@ export default {
 			},
 		},
 		{
-			// Reemplazar todos los atributos fill con currentColor
-			name: 'replaceAttrs',
+			name: 'removeAttrs',
 			params: {
-				attrs: {
-					fill: 'currentColor',
-				},
+				attrs: ['fill'],
+			},
+		},
+		{
+			name: 'addAttributesToSVGElement',
+			params: {
+				attributes: [{ fill: 'currentColor' }],
 			},
 		},
 	],

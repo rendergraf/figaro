@@ -3,16 +3,26 @@ import { variantsButton, createPadding, FlexMixin, fontSizes, getColorTheme } fr
 import { ButtonProps } from './types';
 
 const paddingSizes = {
-	xs: createPadding('4px 8px'),
-	sm: createPadding('6px 12px'),
-	md: createPadding('8px 16px'),
-	lg: createPadding('10px 20px'),
-	xl: createPadding('12px 24px'),
+	xs: createPadding('0px 8px'),
+	sm: createPadding('0px 12px'),
+	md: createPadding('0px 16px'),
+	lg: createPadding('0px 20px'),
+	xl: createPadding('0px 24px'),
+};
+
+const sizeMap = {
+	xs: '32px',
+	sm: '36px',
+	md: '40px',
+	lg: '44px',
+	xl: '48px',
 };
 
 export const Button = styled.button<ButtonProps>`
+	height: ${({ size = 'md' }) => sizeMap[size]};
 	background-color: ${({ variant }) => getColorTheme({ variant })};
 	color: ${({ variant }) => getColorTheme({ variant, inv: true })};
+	min-width: ${({ size = 'md' }) => sizeMap[size]};
 
 	padding: ${({ size }) => {
 		const { top, right, bottom, left } = paddingSizes[size || 'xs'];

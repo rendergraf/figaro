@@ -1,10 +1,12 @@
 import { defineConfig } from 'vite';
 import wyw from '@wyw-in-js/vite';
+
 import svgr from 'vite-plugin-svgr';
 
 export default defineConfig(() => ({
 	plugins: [
 		wyw({
+			debug: true,
 			evaluate: true,
 			displayName: true,
 			variableNameSlug: context => `${context.precedingCss.match(/([\w-]+)\s*:\s*$/)[1]}____${context.valueSlug}`,

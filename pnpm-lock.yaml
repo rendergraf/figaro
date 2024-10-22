@@ -2205,7 +2205,7 @@ packages:
     engines: {node: '>=16.0.0'}
     dependencies:
       '@babel/core': 7.25.8
-      '@wyw-in-js/transform': 0.5.4
+      '@wyw-in-js/transform': 0.5.4(typescript@5.3.3)
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -2230,7 +2230,7 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@wyw-in-js/transform@0.5.4:
+  /@wyw-in-js/transform@0.5.4(typescript@5.3.3):
     resolution: {integrity: sha512-qwbEqO/7IYFPruRH3vscmejUgNvimEhpiI8Hgf9N0pT/fjhBp539QGPVhLQHI8885fWW/LBzbbyL/v9Q72kmoQ==}
     engines: {node: '>=16.0.0'}
     dependencies:
@@ -2260,7 +2260,7 @@ packages:
       vite: '>=3.2.7'
     dependencies:
       '@wyw-in-js/shared': 0.5.4
-      '@wyw-in-js/transform': 0.5.4
+      '@wyw-in-js/transform': 0.5.4(typescript@5.3.3)
       vite: 5.1.4
     transitivePeerDependencies:
       - supports-color

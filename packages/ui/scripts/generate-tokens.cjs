@@ -63,6 +63,7 @@ function generateCssVariable(variable, variables) {
 	try {
 		const resolvedValue = resolveVariableAlias(variable.id, variables);
 		const value = resolvedValue.value;
+		console.log(value);
 
 		switch (resolvedValue.resolvedType) {
 			case 'COLOR':
@@ -72,7 +73,7 @@ function generateCssVariable(variable, variables) {
 				cssVarValue = typeof value === 'number' ? value.toString() + 'px' : value;
 				break;
 			case 'STRING':
-				cssVarValue = `"${value}"`;
+				cssVarValue = `${value}`;
 				break;
 			default:
 				return null;
